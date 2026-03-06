@@ -84,13 +84,27 @@
     gap: 8px; position: relative; z-index: 1;
   }
   .factor-pill {
-    display: flex; align-items: center; gap: 6px;
+    display: inline-flex; align-items: center; gap: 5px;
     background: var(--card); border: 1px solid var(--border);
     border-radius: 20px; padding: 5px 12px;
     font-size: 11px; font-weight: 500;
+    cursor: pointer; transition: border-color .2s, background .2s;
+    flex-direction: column; align-items: flex-start;
+    position: relative;
   }
-  .factor-pill .dot { width: 7px; height: 7px; border-radius: 50%; }
-  .factor-pill .weight { color: var(--green); font-weight: 600; }
+  .factor-pill .pill-top { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+  .factor-pill:hover { border-color: var(--green2); background: var(--card2); }
+  .factor-pill.open  { border-color: var(--green); background: var(--card2); border-radius: 12px; }
+  .pill-expand {
+    display: none; font-size: 11px; color: var(--muted);
+    line-height: 1.55; padding-top: 6px;
+    border-top: 1px solid var(--border); margin-top: 4px;
+    width: 180px; font-weight: 400;
+  }
+  .factor-pill.open .pill-expand { display: block; }
+  .factor-pill .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .factor-pill .weight { color: var(--green); font-weight: 700; font-size: 11px; }
+  .factor-pill .fname  { color: var(--text); font-weight: 500; }
 
   /* ── Tabs ── */
   .tabs {
@@ -200,6 +214,18 @@
   }
   .why-box .why-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
   .why-box p { font-size: 13px; color: #b7dfc4; line-height: 1.65; }
+
+  .dose-box {
+    margin-top: 10px;
+    background: rgba(233,196,106,.06);
+    border: 1px solid rgba(233,196,106,.2);
+    border-radius: 8px; padding: 10px 14px;
+  }
+  .dose-box .dose-label {
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 5px; font-weight: 700;
+  }
+  .dose-box p { font-size: 12.5px; color: #c8b87a; line-height: 1.6; }
 
   .meta-badges { display: flex; flex-direction: column; gap: 8px; }
   .meta-badge {
@@ -442,6 +468,71 @@
   }
   .recipe-card-tip strong { color: var(--green); display: block; margin-bottom: 2px; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
 
+  /* ── Compound spotlight ── */
+  .rc-spotlight {
+    margin-top: 12px;
+    background: rgba(0,0,0,.25);
+    border: 1px solid rgba(82,183,136,.12);
+    border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .rc-spotlight-title {
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--green); font-weight: 700; margin-bottom: 10px;
+  }
+  .rc-spotlight-row {
+    display: flex; flex-direction: column;
+    margin-bottom: 9px; padding-bottom: 9px;
+    border-bottom: 1px solid rgba(82,183,136,.08);
+  }
+  .rc-spotlight-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .rc-compound-name {
+    font-size: 11px; font-weight: 700; color: var(--green3);
+    margin-bottom: 3px; font-style: italic;
+  }
+  .rc-compound-desc {
+    font-size: 11.5px; color: #7aaa8a; line-height: 1.55;
+  }
+
+  /* ── Glossary footer ── */
+  .glossary {
+    max-width: 860px; margin: 0 auto;
+    padding: 0 16px 48px;
+  }
+  .glossary-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; color: var(--green);
+    font-weight: 700; margin-bottom: 4px;
+  }
+  .glossary-sub {
+    font-size: 12px; color: var(--dim); font-style: italic; margin-bottom: 18px;
+  }
+  .glossary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+  }
+  .glossary-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px 18px;
+    border-top: 3px solid var(--accent-color, #52b788);
+  }
+  .glossary-card-title {
+    font-size: 12px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; margin-bottom: 6px;
+  }
+  .glossary-card-body {
+    font-size: 12px; color: #7aaa8a; line-height: 1.6;
+  }
+  .glossary-card-example {
+    margin-top: 8px; padding-top: 8px;
+    border-top: 1px solid var(--border);
+    font-size: 11px; color: var(--dim); font-style: italic;
+  }
+  .glossary-divider {
+    border: none; border-top: 1px solid var(--border);
+    margin: 32px 16px 28px; max-width: 860px; margin-left: auto; margin-right: auto;
+  }
 
   .ingredient-card {
     opacity: 0; transform: translateY(12px);
@@ -457,11 +548,26 @@
   <h1>The Ultimate Juice Ranking</h1>
   <p class="subtitle">Optimised for Anti-Inflammation &nbsp;·&nbsp; Liver Detox</p>
   <div class="factor-pills">
-    <div class="factor-pill"><div class="dot" style="background:#e07b39"></div>Antioxidant <span class="weight">20%</span></div>
-    <div class="factor-pill"><div class="dot" style="background:#c1121f"></div>Anti-Inflammatory <span class="weight">30%</span></div>
-    <div class="factor-pill"><div class="dot" style="background:#40916c"></div>Liver Detox <span class="weight">25%</span></div>
-    <div class="factor-pill"><div class="dot" style="background:#9b2335"></div>Phytonutrients <span class="weight">15%</span></div>
-    <div class="factor-pill"><div class="dot" style="background:#e9c46a"></div>Enzymes <span class="weight">10%</span></div>
+    <div class="factor-pill" onclick="togglePill(this)">
+      <div class="pill-top"><div class="dot" style="background:#e07b39"></div><span class="weight">20%</span><span class="fname">Antioxidant</span></div>
+      <div class="pill-expand">Neutralises free radicals that damage cells. Your cellular bodyguard — fights oxidative stress from pollution, stress &amp; ageing.</div>
+    </div>
+    <div class="factor-pill" onclick="togglePill(this)">
+      <div class="pill-top"><div class="dot" style="background:#c1121f"></div><span class="weight">30%</span><span class="fname">Anti-Inflammatory</span></div>
+      <div class="pill-expand">Blocks COX-2 &amp; NF-κB pathways that keep inflammation on. Chronic inflammation underlies heart disease, diabetes &amp; arthritis.</div>
+    </div>
+    <div class="factor-pill" onclick="togglePill(this)">
+      <div class="pill-top"><div class="dot" style="background:#40916c"></div><span class="weight">25%</span><span class="fname">Liver Detox</span></div>
+      <div class="pill-expand">Activates liver Phase I &amp; II enzymes that break down and excrete toxins, hormones &amp; medications. Real, biological detox.</div>
+    </div>
+    <div class="factor-pill" onclick="togglePill(this)">
+      <div class="pill-top"><div class="dot" style="background:#9b2335"></div><span class="weight">15%</span><span class="fname">Phytonutrients</span></div>
+      <div class="pill-expand">Plant compounds (flavonoids, carotenoids, polyphenols) that protect us just like they protect the plant. Different colours = different compounds.</div>
+    </div>
+    <div class="factor-pill" onclick="togglePill(this)">
+      <div class="pill-top"><div class="dot" style="background:#e9c46a"></div><span class="weight">10%</span><span class="fname">Enzymes</span></div>
+      <div class="pill-expand">Live biological catalysts preserved by slow cold-press juicing. Destroyed by heat. Aid digestion &amp; reduce energy cost of processing food.</div>
+    </div>
   </div>
 </header>
 
@@ -672,10 +778,14 @@
             <span class="rc-benefit">Skin glow</span>
           </div>
           <div class="recipe-card-tip"><strong>Pro tip</strong>Juice spinach between the cucumber slices — it won't juice well alone in a slow juicer. Yields ~400ml. Best drunk at breakfast on an empty stomach.</div>
-        </div>
-      </div>
-
-      <!-- 2: Sunrise Glow -->
+          <div class="rc-spotlight">
+            <div class="rc-spotlight-title">Key Fruit Compounds</div>
+            <div class="rc-spotlight-row"><span class="rc-compound-name">Quercetin</span><span class="rc-compound-desc">A flavonoid in green apple that suppresses histamine release and blocks inflammatory signals — acts like a natural antihistamine and calms systemic inflammation.</span></div>
+            <div class="rc-spotlight-row"><span class="rc-compound-name">Limonene</span><span class="rc-compound-desc">Found in lemon peel and juice, it activates the liver's glutathione detox enzyme. Also shown to support healthy digestion and reduce acid reflux.</span></div>
+            <div class="rc-spotlight-row"><span class="rc-compound-name">Apigenin</span><span class="rc-compound-desc">From celery, this flavone reduces cortisol levels, calms the nervous system and has notable anti-anxiety properties on top of its anti-inflammatory action.</span></div>
+          </div>
+        </div><!-- /recipe-card-body -->
+      </div><!-- /recipe-card Green Machine -->
       <div class="recipe-card">
         <div class="recipe-card-banner" style="background: linear-gradient(90deg,#f4a261,#e9c46a,#e07b39)"></div>
         <div class="recipe-card-body">
@@ -696,10 +806,14 @@
             <span class="rc-benefit">Skin health</span>
           </div>
           <div class="recipe-card-tip"><strong>Pro tip</strong>Add a crack of black pepper to activate the turmeric. This is the most beginner-friendly juice — naturally sweet and zero bitterness. Great for kids too.</div>
-        </div>
-      </div>
-
-      <!-- 3: Beet Builder -->
+          <div class="rc-spotlight">
+            <div class="rc-spotlight-title">Key Fruit Compounds</div>
+            <div class="rc-spotlight-row"><span class="rc-compound-name">Beta-Carotene</span><span class="rc-compound-desc">From carrot — your body converts it to Vitamin A, essential for eye health, skin repair, and immune defence. A potent fat-soluble antioxidant that protects cells from oxidative damage.</span></div>
+            <div class="rc-spotlight-row"><span class="rc-compound-name">Hesperidin</span><span class="rc-compound-desc">A flavonoid concentrated in orange pith and peel. Strengthens blood vessel walls, reduces blood pressure, and has its own separate anti-inflammatory action from Vitamin C.</span></div>
+            <div class="rc-spotlight-row"><span class="rc-compound-name">Vitamin C</span><span class="rc-compound-desc">From orange and lemon — beyond immunity, it directly recycles other antioxidants (including Vitamin E), stimulates collagen production, and stabilises curcumin in the juice.</span></div>
+          </div>
+        </div><!-- /recipe-card-body -->
+      </div><!-- /recipe-card Sunrise Glow -->
       <div class="recipe-card">
         <div class="recipe-card-banner" style="background: linear-gradient(90deg,#9b2335,#c1121f,#b5424e)"></div>
         <div class="recipe-card-body">
@@ -720,10 +834,14 @@
             <span class="rc-benefit">Blood pressure</span>
           </div>
           <div class="recipe-card-tip"><strong>Pro tip</strong>Drink 90 min before exercise for the nitrate benefit — studies show beet juice improves endurance by 2–3%. Start with half a beet if you're new to it; it's potent.</div>
-        </div>
-      </div>
-
-      <!-- 4: Tropical Cleanse -->
+          <div class="rc-spotlight">
+            <div class="rc-spotlight-title">Key Fruit Compounds</div>
+            <div class="rc-spotlight-row"><span class="rc-compound-name">Betalains</span><span class="rc-compound-desc">The red pigment in beetroot — one of the most powerful natural antioxidants known. Directly scavenges free radicals, reduces oxidative stress in the liver, and gives the juice its deep crimson colour.</span></div>
+            <div class="rc-spotlight-row"><span class="rc-compound-name">Dietary Nitrates</span><span class="rc-compound-desc">From beetroot — converted in the body to nitric oxide, which relaxes and widens blood vessels. This lowers blood pressure, improves oxygen delivery to muscles, and boosts exercise stamina.</span></div>
+            <div class="rc-spotlight-row"><span class="rc-compound-name">Malic Acid</span><span class="rc-compound-desc">From apple — plays a direct role in the Krebs energy cycle inside your cells, helping convert food into ATP (energy). Also helps the liver process and eliminate toxins more efficiently.</span></div>
+          </div>
+        </div><!-- /recipe-card-body -->
+      </div><!-- /recipe-card Beet Builder -->
       <div class="recipe-card">
         <div class="recipe-card-banner" style="background: linear-gradient(90deg,#f7b731,#52b788,#74c69d)"></div>
         <div class="recipe-card-body">
@@ -744,8 +862,14 @@
             <span class="rc-benefit">Joint health</span>
           </div>
           <div class="recipe-card-tip"><strong>Pro tip</strong>Pack mint tightly between pineapple pieces to push it through. Best enjoyed 30 min after a heavy meal to help break down proteins. Serve over ice for maximum refreshment.</div>
-        </div>
-      </div>
+          <div class="rc-spotlight">
+            <div class="rc-spotlight-title">Key Fruit Compounds</div>
+            <div class="rc-spotlight-row"><span class="rc-compound-name">Bromelain</span><span class="rc-compound-desc">A proteolytic enzyme from pineapple that breaks down proteins in the gut, reducing bloating and aiding digestion. Also has powerful anti-inflammatory effects on joints, sinuses, and soft tissue — used medically for post-surgery swelling.</span></div>
+            <div class="rc-spotlight-row"><span class="rc-compound-name">Limonene</span><span class="rc-compound-desc">From lime peel — higher concentration than in lemon. Activates detox enzymes in the liver, has shown anti-tumour properties in research, and provides the signature sharp citrus aroma.</span></div>
+            <div class="rc-spotlight-row"><span class="rc-compound-name">Menthol & Rosmarinic Acid</span><span class="rc-compound-desc">From mint — menthol relaxes the smooth muscles of the gut, relieving cramping and IBS symptoms. Rosmarinic acid is a potent anti-inflammatory that works synergistically with bromelain.</span></div>
+          </div>
+        </div><!-- end recipe-card-body -->
+      </div><!-- end recipe-card -->
 
     </div><!-- end recipes-grid -->
 
@@ -755,14 +879,55 @@
       <div style="padding:4px 0">
         <div class="info-row"><strong style="color:#52b788">Green Machine</strong><span>Best for: daily routine, gentle energy, skin — mildest taste</span></div>
         <div class="info-row"><strong style="color:#e9c46a">Sunrise Glow</strong><span>Best for: immune support, beginners, naturally sweet — most crowd-pleasing</span></div>
-        <div class="info-row"><strong style="color:#e07080">Beet Builder</strong><span>Best for: pre-workout, liver detox, serious health goals — earthy & bold</span></div>
-        <div class="info-row"><strong style="color:#74c69d">Tropical Cleanse</strong><span>Best for: after heavy meals, digestion, hot weather — fruity & refreshing</span></div>
+        <div class="info-row"><strong style="color:#e07080">Beet Builder</strong><span>Best for: pre-workout, liver detox, serious health goals — earthy &amp; bold</span></div>
+        <div class="info-row"><strong style="color:#74c69d">Tropical Cleanse</strong><span>Best for: after heavy meals, digestion, hot weather — fruity &amp; refreshing</span></div>
       </div>
     </div>
 
+  </div><!-- end tab-more -->
+
+  <!-- ── GLOSSARY — always visible below all tabs ── -->
+  <div style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border)">
+    <div style="text-align:center;margin-bottom:24px">
+      <div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:6px">Reference Guide</div>
+      <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--text);font-weight:700;margin-bottom:4px">Understanding the Science</div>
+      <div style="font-size:12px;color:var(--dim);font-style:italic">Plain-English explanations of every health term used in this guide — scroll down to read</div>
+    </div>
+    <div class="glossary-grid">
+      <div class="glossary-card" style="--accent-color:#e07b39">
+        <div class="glossary-card-title" style="color:#e07b39">Antioxidant</div>
+        <div class="glossary-card-body">Your body constantly produces unstable molecules called <strong style="color:#e8f5e9">free radicals</strong> from pollution, stress, and normal metabolism. Left unchecked, they damage your cells and accelerate ageing. Antioxidants neutralise free radicals — think of them as your cellular bodyguards.</div>
+        <div class="glossary-card-example">Found in: beets (betalains), carrot (beta-carotene), lemon (Vit C), turmeric (curcumin)</div>
+      </div>
+      <div class="glossary-card" style="--accent-color:#c1121f">
+        <div class="glossary-card-title" style="color:#c1121f">Anti-Inflammatory</div>
+        <div class="glossary-card-body"><strong style="color:#e8f5e9">Chronic low-grade inflammation</strong> underlies almost every modern disease: heart disease, diabetes, cancer, arthritis. Anti-inflammatory compounds block specific signalling pathways (COX-2, NF-κB) that keep inflammation unnecessarily switched on. Food can genuinely act like medicine here.</div>
+        <div class="glossary-card-example">Found in: turmeric (curcumin), ginger (gingerols), pineapple (bromelain), celery (apigenin)</div>
+      </div>
+      <div class="glossary-card" style="--accent-color:#40916c">
+        <div class="glossary-card-title" style="color:#40916c">Liver Detox</div>
+        <div class="glossary-card-body">Your liver detoxifies everything in two stages — <strong style="color:#e8f5e9">Phase I breaks toxins down; Phase II binds them</strong> for excretion. Many juice ingredients directly activate these enzyme systems. This is real, biological detox — not marketing.</div>
+        <div class="glossary-card-example">Found in: beets (betaine), kale (glucosinolates), broccoli (sulforaphane), lemon (limonene)</div>
+      </div>
+      <div class="glossary-card" style="--accent-color:#9b2335">
+        <div class="glossary-card-title" style="color:#9b2335">Phytonutrients</div>
+        <div class="glossary-card-body">"Phyto" means plant. These are <strong style="color:#e8f5e9">thousands of compounds plants make</strong> to protect themselves — and when we consume them, those protective effects transfer to us. Flavonoids, carotenoids, glucosinolates, polyphenols are all phytonutrients. Different colours = different compounds — diversity matters most.</div>
+        <div class="glossary-card-example">Found in: all colourful produce — stronger colour and flavour = higher phytonutrient density</div>
+      </div>
+      <div class="glossary-card" style="--accent-color:#e9c46a">
+        <div class="glossary-card-title" style="color:#e9c46a">Enzymes</div>
+        <div class="glossary-card-body">Enzymes are <strong style="color:#e8f5e9">biological catalysts</strong> that speed up every chemical reaction in your body. Raw juice contains live plant enzymes that survive cold-press juicing but are destroyed by heat above 40°C. They support your digestive system and reduce the energy cost of breaking down food.</div>
+        <div class="glossary-card-example">Found in: pineapple (bromelain), ginger (zingibain), all raw slow-pressed produce</div>
+      </div>
+      <div class="glossary-card" style="--accent-color:#74c69d">
+        <div class="glossary-card-title" style="color:#74c69d">Bioavailability</div>
+        <div class="glossary-card-body">A nutrient is only as useful as your body's ability to <strong style="color:#e8f5e9">actually absorb it</strong>. Curcumin alone has very low bioavailability — black pepper's piperine boosts it by ~2000%. Fat-soluble nutrients like beta-carotene absorb far better alongside a small amount of healthy fat.</div>
+        <div class="glossary-card-example">Tip: turmeric + black pepper always; pair carrot juice with a small handful of nuts</div>
+      </div>
+    </div>
   </div>
 
-</div>
+</div><!-- end container -->
 
 <footer>
   Generated with Claude &nbsp;·&nbsp; Slow Juicer Intelligence &nbsp;·&nbsp; Anti-Inflammation &amp; Liver Detox Edition
@@ -780,40 +945,52 @@ const FACTORS = [
 const DATA = [
   { rank:1,  name:'Kale',             kind:'Vegetable', compound:'Glucosinolates + Quercetin',
     scores:[9,8,9,10,7], overall:8.65, hex:'#2d6a4f',
-    why:'Activates liver Phase II detox enzymes via glucosinolates; densely packed with anti-inflammatory flavonoids and chlorophyll. One of the most nutrient-dense greens you can juice.' },
+    why:'Activates liver Phase II detox enzymes via glucosinolates; densely packed with anti-inflammatory flavonoids and chlorophyll. One of the most nutrient-dense greens you can juice.',
+    dose:'3–5 large leaves (≈60–80g) daily. This gives ~50mg glucosinolates — the therapeutic threshold. Rotate with spinach weekly to avoid excess oxalates.' },
   { rank:2,  name:'Turmeric',         kind:'Root',      compound:'Curcumin',
     scores:[8,10,9,9,4], overall:8.60, hex:'#e07b39',
-    why:'Curcumin is the most studied natural anti-inflammatory compound. Protects liver cells and stimulates bile production. Always add a pinch of black pepper — it boosts curcumin absorption by ~2000%.' },
+    why:'Curcumin is the most studied natural anti-inflammatory compound. Protects liver cells and stimulates bile production. Always add a pinch of black pepper — it boosts curcumin absorption by ~2000%.',
+    dose:'1–2 inch fresh knob (≈5–10g) daily. Provides ~50–100mg curcumin. Must be paired with black pepper. Dried powder alternative: ½ tsp = 1 inch fresh.' },
   { rank:3,  name:'Beets',            kind:'Vegetable', compound:'Betalains + Betaine',
     scores:[9,8,10,8,5], overall:8.40, hex:'#9b2335',
-    why:'Betalains are elite antioxidants found almost nowhere else in nature. Betaine directly supports liver methylation — a critical detox pathway for processing hormones and heavy metals.' },
+    why:'Betalains are elite antioxidants found almost nowhere else in nature. Betaine directly supports liver methylation — a critical detox pathway for processing hormones and heavy metals.',
+    dose:'½ to 1 medium beet (≈80–130g) daily. Start with ½ if new — beet is potent on the liver and may cause pink urine (harmless). Max 1 large beet/day long-term.' },
   { rank:4,  name:'Ginger',           kind:'Root',      compound:'Gingerols + Shogaols',
     scores:[9,9,7,8,8], overall:8.25, hex:'#b5813e',
-    why:'Gingerols and shogaols directly block inflammatory signalling pathways (COX-2, NF-κB). Also exceptionally rich in live digestive enzymes that are preserved beautifully by slow juicing.' },
+    why:'Gingerols and shogaols directly block inflammatory signalling pathways (COX-2, NF-κB). Also exceptionally rich in live digestive enzymes that are preserved beautifully by slow juicing.',
+    dose:'1–2 inch fresh knob (≈5–10g) daily. Studies use 2–4g for therapeutic anti-inflammatory effects. Old ginger = more potent; young ginger = more juice. Excess may cause heartburn.' },
   { rank:5,  name:'Broccoli',         kind:'Vegetable', compound:'Sulforaphane',
     scores:[8,8,9,9,5], overall:8.10, hex:'#40916c',
-    why:'Sulforaphane is arguably the most potent natural inducer of liver detox enzymes. Cold-pressed slow juicing preserves more of the myrosinase enzyme needed to activate sulforaphane.' },
+    why:'Sulforaphane is arguably the most potent natural inducer of liver detox enzymes. Cold-pressed slow juicing preserves more of the myrosinase enzyme needed to activate sulforaphane.',
+    dose:'½ cup florets (≈45g) daily is sufficient. The myrosinase enzyme activating sulforaphane is fragile — juice immediately and drink fresh. Broccoli sprouts (if available) give 10–100x more sulforaphane.' },
   { rank:6,  name:'Dandelion Greens', kind:'Vegetable', compound:'Taraxacin + Luteolin',
     scores:[8,7,10,8,6], overall:8.00, hex:'#52b788',
-    why:'A classical liver tonic used for centuries: stimulates bile flow, supports gallbladder function, and actively reduces hepatic inflammation. Hard to find but extraordinary if you can source it.' },
+    why:'A classical liver tonic used for centuries: stimulates bile flow, supports gallbladder function, and actively reduces hepatic inflammation. Hard to find but extraordinary if you can source it.',
+    dose:'1 small handful (≈30–40g) daily. Stronger liver effect than kale gram-for-gram. Best combined with something sweet (apple/carrot) to offset the bitterness. Avoid if on blood thinners.' },
   { rank:7,  name:'Lemon',            kind:'Fruit',     compound:'Limonene + Hesperidin',
     scores:[7,7,9,7,6], overall:7.40, hex:'#e9c46a',
-    why:'Limonene in lemon peel activates glutathione S-transferase, a key liver detox enzyme. Vitamin C further reduces oxidative stress and helps stabilise other ingredients in the juice.' },
+    why:'Limonene in lemon peel activates glutathione S-transferase, a key liver detox enzyme. Vitamin C further reduces oxidative stress and helps stabilise other ingredients in the juice.',
+    dose:'½ to 1 whole lemon (≈30–50ml juice) daily. Include a small piece of peel for the limonene. One lemon provides ~30–50mg Vitamin C — about 40–60% of daily needs.' },
   { rank:8,  name:'Carrot',           kind:'Vegetable', compound:'Beta-Carotene + Falcarinol',
     scores:[8,7,7,7,5], overall:7.00, hex:'#f4a261',
-    why:'Beta-carotene supports liver health and modulates immune response. Falcarinol, unique to carrots, has demonstrated direct anti-inflammatory and cancer-preventive properties in studies.' },
+    why:'Beta-carotene supports liver health and modulates immune response. Falcarinol, unique to carrots, has demonstrated direct anti-inflammatory and cancer-preventive properties in studies.',
+    dose:'1–2 medium carrots (≈100–160g) daily. Provides 4–8mg beta-carotene — at or above the optimal daily intake. Excess over months may cause harmless orange skin tint (carotenemia).' },
   { rank:9,  name:'Celery',           kind:'Vegetable', compound:'Apigenin + Phthalides',
     scores:[6,7,7,7,8], overall:6.90, hex:'#74c69d',
-    why:'Apigenin is a potent anti-inflammatory flavone. Phthalides regulate liver enzyme activity. Celery also delivers exceptional juice yield, making it an ideal hydrating base.' },
+    why:'Apigenin is a potent anti-inflammatory flavone. Phthalides regulate liver enzyme activity. Celery also delivers exceptional juice yield, making it an ideal hydrating base.',
+    dose:'3–4 stalks (≈120–160g) daily. Excellent as a juice base — high water content boosts yield for other ingredients. Contains natural sodium; those on low-sodium diets should monitor intake.' },
   { rank:10, name:'Apple',            kind:'Fruit',     compound:'Quercetin + Malic Acid',
     scores:[7,7,7,7,5], overall:6.80, hex:'#c1121f',
-    why:'Quercetin suppresses pro-inflammatory cytokines. Malic acid supports liver energy metabolism. Green apple adds natural sweetness and helps balance the bitterness of dark greens.' },
+    why:'Quercetin suppresses pro-inflammatory cytokines. Malic acid supports liver energy metabolism. Green apple adds natural sweetness and helps balance the bitterness of dark greens.',
+    dose:'½ to 1 medium apple (≈80–150g) daily. Green apple (Granny Smith) has lower sugar and higher quercetin than red varieties. Keep skin on for maximum polyphenol content.' },
   { rank:11, name:'Pineapple',        kind:'Fruit',     compound:'Bromelain',
     scores:[6,8,5,6,10], overall:6.75, hex:'#f7b731',
-    why:'Bromelain is a powerful proteolytic enzyme complex with strong anti-inflammatory effects, particularly on joint tissue. Slow juicers preserve bromelain far better than centrifugal models.' },
+    why:'Bromelain is a powerful proteolytic enzyme complex with strong anti-inflammatory effects, particularly on joint tissue. Slow juicers preserve bromelain far better than centrifugal models.',
+    dose:'1–2 thick slices (≈80–120g) daily. Core contains highest bromelain concentration — include it when juicing. Best consumed 30 min after a meal for digestive benefit.' },
   { rank:12, name:'Cucumber',         kind:'Vegetable', compound:'Fisetin + Cucurbitacins',
     scores:[5,5,5,5,6],  overall:5.10, hex:'#95d5b2',
-    why:'Mild anti-inflammatory effects via fisetin. Lower nutrient density than the others, but serves an important role as a hydrating, enzyme-preserving base that amplifies other ingredients.' },
+    why:'Mild anti-inflammatory effects via fisetin. Lower nutrient density than the others, but serves an important role as a hydrating, enzyme-preserving base that amplifies other ingredients.',
+    dose:'½ to 1 whole cucumber (≈150–300g) daily. Primarily a base ingredient — not a therapeutic dose to worry about. English cucumber (thin-skinned) gives more juice than regular variety.' },
 ];
 
 const RECIPE = [
@@ -870,6 +1047,10 @@ DATA.forEach((ing, idx) => {
         <div class="why-box">
           <div class="why-label">Why it ranks here</div>
           <p>${ing.why}</p>
+          <div class="dose-box">
+            <div class="dose-label">Daily Dose for Juicing</div>
+            <p>${ing.dose}</p>
+          </div>
         </div>
         <div class="meta-badges">
           <div class="meta-badge">
@@ -922,6 +1103,13 @@ function switchTab(name, btn) {
   document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
   btn.classList.add('active');
+}
+
+// Tappable factor pills
+function togglePill(el) {
+  const wasOpen = el.classList.contains('open');
+  document.querySelectorAll('.factor-pill.open').forEach(p => p.classList.remove('open'));
+  if (!wasOpen) el.classList.add('open');
 }
 </script>
 </body>
