@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ultimate Juice Ranking · Anti-Inflammation & Liver Detox</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg:        #0a1510;
+    --bg2:       #0f1e14;
+    --card:      #111e16;
+    --card2:     #152219;
+    --border:    #1e3a26;
+    --green:     #52b788;
+    --green2:    #2d6a4f;
+    --green3:    #74c69d;
+    --green4:    #95d5b2;
+    --text:      #e8f5e9;
+    --muted:     #74c69d;
+    --dim:       #3a6648;
+    --gold:      #e9c46a;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Subtle noise texture overlay */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ── Header ── */
+  header {
+    position: relative;
+    text-align: center;
+    padding: 60px 24px 40px;
+    overflow: hidden;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 50%, rgba(45,106,79,.18) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 80% 50%, rgba(82,183,136,.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .eyebrow {
+    font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+    color: var(--green); font-weight: 600; margin-bottom: 14px;
+    position: relative; z-index: 1;
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 6vw, 60px);
+    font-weight: 900;
+    background: linear-gradient(135deg, #e8f5e9 20%, #52b788 80%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    position: relative; z-index: 1;
+  }
+  .subtitle {
+    font-size: 14px; color: var(--green3); font-style: italic;
+    margin-bottom: 30px; position: relative; z-index: 1;
+  }
+  .factor-pills {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 8px; position: relative; z-index: 1;
+  }
+  .factor-pill {
+    display: flex; align-items: center; gap: 6px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 20px; padding: 5px 12px;
+    font-size: 11px; font-weight: 500;
+  }
+  .factor-pill .dot { width: 7px; height: 7px; border-radius: 50%; }
+  .factor-pill .weight { color: var(--green); font-weight: 600; }
+
+  /* ── Tabs ── */
+  .tabs {
+    display: flex; justify-content: center;
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    margin-bottom: 32px;
+  }
+  .tab {
+    background: none; border: none; cursor: pointer;
+    padding: 12px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--dim); border-bottom: 2px solid transparent;
+    transition: all .25s; font-weight: 500;
+  }
+  .tab.active { color: var(--green); border-bottom-color: var(--green); }
+  .tab:hover { color: var(--green3); }
+
+  /* ── Main container ── */
+  .container { max-width: 860px; margin: 0 auto; padding: 0 16px 60px; }
+
+  /* ── Section heading ── */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; color: var(--green);
+    margin-bottom: 16px; font-weight: 700;
+  }
+
+  /* ── Ingredient Cards ── */
+  .ingredient-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+    overflow: hidden;
+  }
+  .ingredient-card:hover { border-color: var(--green2); background: var(--card2); }
+  .ingredient-card.open  { box-shadow: 0 0 28px rgba(82,183,136,.12); }
+
+  .card-main {
+    display: grid;
+    grid-template-columns: 52px 1fr 140px 52px;
+    align-items: center;
+    padding: 14px 18px;
+    gap: 14px;
+  }
+  @media(max-width:600px) {
+    .card-main { grid-template-columns: 44px 1fr 100px 44px; gap: 10px; padding: 12px; }
+  }
+
+  .rank-badge {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: #fff;
+    flex-shrink: 0;
+  }
+
+  .card-info .name {
+    font-size: 16px; font-weight: 600; color: var(--text); line-height: 1.2;
+  }
+  .card-info .kind-badge {
+    display: inline-block;
+    font-size: 9px; font-weight: 700; letter-spacing: 1px;
+    padding: 2px 7px; border-radius: 4px;
+    background: rgba(255,255,255,.05); margin: 3px 0 4px;
+    text-transform: uppercase;
+  }
+  .card-info .compound { font-size: 11px; color: var(--muted); font-style: italic; }
+
+  .score-bars { display: flex; flex-direction: column; gap: 4px; }
+  .bar-row { display: flex; align-items: center; gap: 6px; }
+  .bar-label { font-size: 8px; color: var(--dim); text-transform: uppercase; letter-spacing: .3px; width: 54px; text-align: right; flex-shrink: 0; }
+  .bar-track { flex: 1; height: 5px; background: rgba(255,255,255,.05); border-radius: 3px; overflow: hidden; }
+  .bar-fill  { height: 100%; border-radius: 3px; transition: width .6s cubic-bezier(.4,0,.2,1); }
+  .bar-num   { font-size: 9px; color: var(--green); width: 12px; text-align: right; flex-shrink: 0; }
+
+  .overall-score {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+  }
+  .overall-score .num { font-size: 26px; font-weight: 700; line-height: 1; }
+  .overall-score .lbl { font-size: 8px; letter-spacing: 1px; color: var(--dim); font-family: 'DM Sans', sans-serif; }
+
+  /* Expanded detail */
+  .card-detail {
+    display: none;
+    padding: 16px 18px 18px;
+    border-top: 1px solid var(--border);
+    background: rgba(0,0,0,.15);
+    animation: slideDown .25s ease;
+  }
+  .ingredient-card.open .card-detail { display: block; }
+  @keyframes slideDown { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+  .detail-inner {
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 14px; align-items: start;
+  }
+  @media(max-width:500px) { .detail-inner { grid-template-columns: 1fr; } }
+
+  .why-box {
+    background: rgba(82,183,136,.05); border: 1px solid rgba(82,183,136,.15);
+    border-radius: 8px; padding: 12px 14px;
+  }
+  .why-box .why-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
+  .why-box p { font-size: 13px; color: #b7dfc4; line-height: 1.65; }
+
+  .meta-badges { display: flex; flex-direction: column; gap: 8px; }
+  .meta-badge {
+    background: rgba(0,0,0,.2); border-radius: 8px;
+    padding: 8px 14px; text-align: center; min-width: 90px;
+  }
+  .meta-badge .mb-label { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: var(--green); }
+  .meta-badge .mb-val   { font-size: 13px; color: var(--text); margin-top: 2px; text-transform: capitalize; }
+
+  /* ── Tab panels ── */
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── Recipe page ── */
+  .recipe-header {
+    background: linear-gradient(135deg, var(--card2), var(--card));
+    border: 1px solid var(--border);
+    border-radius: 14px 14px 0 0;
+    padding: 24px 28px;
+  }
+  .recipe-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; color: var(--text); font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .recipe-header p { font-size: 13px; color: var(--muted); font-style: italic; }
+
+  .recipe-table {
+    border: 1px solid var(--border); border-top: none;
+    border-radius: 0 0 14px 14px; overflow: hidden; margin-bottom: 24px;
+  }
+  .recipe-row {
+    display: grid; grid-template-columns: 1fr 140px 160px;
+    padding: 13px 20px; border-bottom: 1px solid var(--border);
+    align-items: center; gap: 12px;
+    transition: background .15s;
+  }
+  .recipe-row:last-child { border-bottom: none; }
+  .recipe-row:nth-child(odd)  { background: var(--card); }
+  .recipe-row:nth-child(even) { background: var(--card2); }
+  .recipe-row:hover { background: rgba(82,183,136,.06); }
+  .recipe-row .ing-name { font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 8px; }
+  .recipe-row .ing-dot  { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .recipe-row .ing-role { font-size: 12px; color: var(--muted); font-style: italic; }
+  .recipe-row .ing-amt  {
+    font-size: 13px; font-weight: 600; color: var(--green);
+    background: rgba(82,183,136,.1); border-radius: 6px;
+    padding: 4px 10px; text-align: center;
+  }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media(max-width:600px) { .two-col { grid-template-columns: 1fr; } }
+
+  .info-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden;
+  }
+  .info-card-header {
+    background: var(--green2); padding: 12px 18px;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: #fff; font-weight: 600;
+  }
+  .info-row {
+    padding: 11px 18px; border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-row strong { color: var(--green); display: block; }
+  .info-row span   { color: var(--muted); font-size: 11px; }
+
+  /* ── Divider ── */
+  hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+
+  /* ── Hint text ── */
+  .hint { font-size: 12px; color: var(--dim); text-align: center; margin-bottom: 18px; font-style: italic; }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center; padding: 20px;
+    font-size: 11px; color: var(--dim);
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── Stagger animation on load ── */
+  .ingredient-card {
+    opacity: 0; transform: translateY(12px);
+    animation: fadeUp .4s forwards;
+  }
+  @keyframes fadeUp { to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Slow Juicer Intelligence</div>
+  <h1>The Ultimate Juice Ranking</h1>
+  <p class="subtitle">Optimised for Anti-Inflammation &nbsp;·&nbsp; Liver Detox</p>
+  <div class="factor-pills">
+    <div class="factor-pill"><div class="dot" style="background:#e07b39"></div>Antioxidant <span class="weight">20%</span></div>
+    <div class="factor-pill"><div class="dot" style="background:#c1121f"></div>Anti-Inflammatory <span class="weight">30%</span></div>
+    <div class="factor-pill"><div class="dot" style="background:#40916c"></div>Liver Detox <span class="weight">25%</span></div>
+    <div class="factor-pill"><div class="dot" style="background:#9b2335"></div>Phytonutrients <span class="weight">15%</span></div>
+    <div class="factor-pill"><div class="dot" style="background:#e9c46a"></div>Enzymes <span class="weight">10%</span></div>
+  </div>
+</header>
+
+<div class="tabs">
+  <button class="tab active" onclick="switchTab('ranking',this)">Ingredient Ranking</button>
+  <button class="tab"        onclick="switchTab('recipe',this)">Ultimate Recipe</button>
+</div>
+
+<div class="container">
+
+  <!-- ── RANKING TAB ── -->
+  <div id="tab-ranking" class="tab-panel active">
+    <p class="hint">Tap any ingredient to expand details</p>
+    <div id="cards"></div>
+  </div>
+
+  <!-- ── RECIPE TAB ── -->
+  <div id="tab-recipe" class="tab-panel">
+    <div class="recipe-header">
+      <h2>The Ultimate Detox Elixir</h2>
+      <p>Top 9 ingredients combined &nbsp;·&nbsp; Yields ~500–700 ml &nbsp;·&nbsp; Best on an empty stomach</p>
+    </div>
+    <div class="recipe-table" id="recipe-table"></div>
+
+    <div class="two-col" style="margin-top:8px">
+      <div class="info-card">
+        <div class="info-card-header">Juicing Order</div>
+        <div class="info-row"><strong>1st — Leafy greens (kale, dandelion)</strong><span>Pack tight, juice first</span></div>
+        <div class="info-row"><strong>2nd — Root veg (beets, carrot)</strong><span>Forces greens through</span></div>
+        <div class="info-row"><strong>3rd — Broccoli &amp; celery</strong><span>Liquid extraction</span></div>
+        <div class="info-row"><strong>4th — Roots (ginger, turmeric)</strong><span>Follow with apple</span></div>
+        <div class="info-row"><strong>5th — Apple + lemon</strong><span>Flush &amp; clean the drum</span></div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-header">Pro Tips</div>
+        <div class="info-row"><strong>⏱ Drink within 15 min</strong><span>Enzymes degrade on air exposure</span></div>
+        <div class="info-row"><strong>🌶 Add black pepper</strong><span>Boosts curcumin absorption ~2000%</span></div>
+        <div class="info-row"><strong>🌡 Don't chill pre-juice</strong><span>Room temp yields more enzymes</span></div>
+        <div class="info-row"><strong>🔄 Rotate greens weekly</strong><span>Prevents oxalate build-up from kale</span></div>
+        <div class="info-row"><strong>💧 Pre-hydrate</strong><span>Drink water 30 min before</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Generated with Claude &nbsp;·&nbsp; Slow Juicer Intelligence &nbsp;·&nbsp; Anti-Inflammation &amp; Liver Detox Edition
+</footer>
+
+<script>
+const FACTORS = [
+  { key:'ao', label:'Antioxidant',      color:'#e07b39' },
+  { key:'ai', label:'Anti-Inflam',      color:'#c1121f' },
+  { key:'ld', label:'Liver Detox',      color:'#40916c' },
+  { key:'ph', label:'Phytonutr.',       color:'#9b2335' },
+  { key:'en', label:'Enzymes',          color:'#e9c46a' },
+];
+
+const DATA = [
+  { rank:1,  name:'Kale',             kind:'Vegetable', compound:'Glucosinolates + Quercetin',
+    scores:[9,8,9,10,7], overall:8.65, hex:'#2d6a4f',
+    why:'Activates liver Phase II detox enzymes via glucosinolates; densely packed with anti-inflammatory flavonoids and chlorophyll. One of the most nutrient-dense greens you can juice.' },
+  { rank:2,  name:'Turmeric',         kind:'Root',      compound:'Curcumin',
+    scores:[8,10,9,9,4], overall:8.60, hex:'#e07b39',
+    why:'Curcumin is the most studied natural anti-inflammatory compound. Protects liver cells and stimulates bile production. Always add a pinch of black pepper — it boosts curcumin absorption by ~2000%.' },
+  { rank:3,  name:'Beets',            kind:'Vegetable', compound:'Betalains + Betaine',
+    scores:[9,8,10,8,5], overall:8.40, hex:'#9b2335',
+    why:'Betalains are elite antioxidants found almost nowhere else in nature. Betaine directly supports liver methylation — a critical detox pathway for processing hormones and heavy metals.' },
+  { rank:4,  name:'Ginger',           kind:'Root',      compound:'Gingerols + Shogaols',
+    scores:[9,9,7,8,8], overall:8.25, hex:'#b5813e',
+    why:'Gingerols and shogaols directly block inflammatory signalling pathways (COX-2, NF-κB). Also exceptionally rich in live digestive enzymes that are preserved beautifully by slow juicing.' },
+  { rank:5,  name:'Broccoli',         kind:'Vegetable', compound:'Sulforaphane',
+    scores:[8,8,9,9,5], overall:8.10, hex:'#40916c',
+    why:'Sulforaphane is arguably the most potent natural inducer of liver detox enzymes. Cold-pressed slow juicing preserves more of the myrosinase enzyme needed to activate sulforaphane.' },
+  { rank:6,  name:'Dandelion Greens', kind:'Vegetable', compound:'Taraxacin + Luteolin',
+    scores:[8,7,10,8,6], overall:8.00, hex:'#52b788',
+    why:'A classical liver tonic used for centuries: stimulates bile flow, supports gallbladder function, and actively reduces hepatic inflammation. Hard to find but extraordinary if you can source it.' },
+  { rank:7,  name:'Lemon',            kind:'Fruit',     compound:'Limonene + Hesperidin',
+    scores:[7,7,9,7,6], overall:7.40, hex:'#e9c46a',
+    why:'Limonene in lemon peel activates glutathione S-transferase, a key liver detox enzyme. Vitamin C further reduces oxidative stress and helps stabilise other ingredients in the juice.' },
+  { rank:8,  name:'Carrot',           kind:'Vegetable', compound:'Beta-Carotene + Falcarinol',
+    scores:[8,7,7,7,5], overall:7.00, hex:'#f4a261',
+    why:'Beta-carotene supports liver health and modulates immune response. Falcarinol, unique to carrots, has demonstrated direct anti-inflammatory and cancer-preventive properties in studies.' },
+  { rank:9,  name:'Celery',           kind:'Vegetable', compound:'Apigenin + Phthalides',
+    scores:[6,7,7,7,8], overall:6.90, hex:'#74c69d',
+    why:'Apigenin is a potent anti-inflammatory flavone. Phthalides regulate liver enzyme activity. Celery also delivers exceptional juice yield, making it an ideal hydrating base.' },
+  { rank:10, name:'Apple',            kind:'Fruit',     compound:'Quercetin + Malic Acid',
+    scores:[7,7,7,7,5], overall:6.80, hex:'#c1121f',
+    why:'Quercetin suppresses pro-inflammatory cytokines. Malic acid supports liver energy metabolism. Green apple adds natural sweetness and helps balance the bitterness of dark greens.' },
+  { rank:11, name:'Pineapple',        kind:'Fruit',     compound:'Bromelain',
+    scores:[6,8,5,6,10], overall:6.75, hex:'#f7b731',
+    why:'Bromelain is a powerful proteolytic enzyme complex with strong anti-inflammatory effects, particularly on joint tissue. Slow juicers preserve bromelain far better than centrifugal models.' },
+  { rank:12, name:'Cucumber',         kind:'Vegetable', compound:'Fisetin + Cucurbitacins',
+    scores:[5,5,5,5,6],  overall:5.10, hex:'#95d5b2',
+    why:'Mild anti-inflammatory effects via fisetin. Lower nutrient density than the others, but serves an important role as a hydrating, enzyme-preserving base that amplifies other ingredients.' },
+];
+
+const RECIPE = [
+  { name:'Kale',           amount:'4 large leaves', role:'Detox backbone' },
+  { name:'Beets',          amount:'1 medium',        role:'Liver powerhouse' },
+  { name:'Turmeric',       amount:'1 inch knob',     role:'Anti-inflammation core' },
+  { name:'Ginger',         amount:'1.5 inch knob',   role:'Enzyme + inflammation' },
+  { name:'Broccoli',       amount:'1 cup florets',   role:'Sulforaphane boost' },
+  { name:'Lemon',          amount:'1 whole, peeled', role:'Detox activator' },
+  { name:'Carrot',         amount:'2 medium',        role:'Sweetness + carotene' },
+  { name:'Celery',         amount:'3 stalks',        role:'Liquid base' },
+  { name:'Apple (green)',  amount:'1 medium',        role:'Balance + quercetin' },
+];
+
+function scoreColor(v) {
+  return v >= 8 ? '#52b788' : v >= 7 ? '#e9c46a' : '#74c69d';
+}
+
+// Build cards
+const container = document.getElementById('cards');
+DATA.forEach((ing, idx) => {
+  const card = document.createElement('div');
+  card.className = 'ingredient-card';
+  card.style.animationDelay = (idx * 0.04) + 's';
+  card.style.borderColor = ing.hex + '44';
+
+  const barsHTML = FACTORS.map((f, i) => `
+    <div class="bar-row">
+      <span class="bar-label">${f.label}</span>
+      <div class="bar-track"><div class="bar-fill" style="width:${ing.scores[i]*10}%;background:${f.color}"></div></div>
+      <span class="bar-num">${ing.scores[i]}</span>
+    </div>`).join('');
+
+  const bestFactor = FACTORS[ing.scores.indexOf(Math.max(...ing.scores))].label;
+
+  card.innerHTML = `
+    <div class="card-main">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <div class="rank-badge" style="background:${ing.hex}">#${ing.rank}</div>
+      </div>
+      <div class="card-info">
+        <div class="name">${ing.name}</div>
+        <div class="kind-badge" style="color:${ing.hex}">${ing.kind}</div>
+        <div class="compound">${ing.compound}</div>
+      </div>
+      <div class="score-bars">${barsHTML}</div>
+      <div class="overall-score">
+        <div class="num" style="color:${scoreColor(ing.overall)}">${ing.overall.toFixed(1)}</div>
+        <div class="lbl">SCORE</div>
+      </div>
+    </div>
+    <div class="card-detail">
+      <div class="detail-inner">
+        <div class="why-box">
+          <div class="why-label">Why it ranks here</div>
+          <p>${ing.why}</p>
+        </div>
+        <div class="meta-badges">
+          <div class="meta-badge">
+            <div class="mb-label">Type</div>
+            <div class="mb-val">${ing.kind}</div>
+          </div>
+          <div class="meta-badge">
+            <div class="mb-label">Top factor</div>
+            <div class="mb-val" style="color:${ing.hex};font-size:11px">${bestFactor}</div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+
+  card.addEventListener('click', () => {
+    const wasOpen = card.classList.contains('open');
+    document.querySelectorAll('.ingredient-card.open').forEach(c => {
+      c.classList.remove('open');
+      c.style.borderColor = c._hex + '44';
+    });
+    if (!wasOpen) {
+      card.classList.add('open');
+      card.style.borderColor = ing.hex;
+      card._hex = ing.hex;
+    } else {
+      card.style.borderColor = ing.hex + '44';
+    }
+  });
+  card._hex = ing.hex;
+  container.appendChild(card);
+});
+
+// Build recipe
+const rt = document.getElementById('recipe-table');
+RECIPE.forEach(r => {
+  const match = DATA.find(d => d.name === r.name || r.name.startsWith(d.name));
+  const hex = match ? match.hex : '#52b788';
+  const row = document.createElement('div');
+  row.className = 'recipe-row';
+  row.innerHTML = `
+    <div class="ing-name"><div class="ing-dot" style="background:${hex}"></div>${r.name}</div>
+    <div class="ing-amt">${r.amount}</div>
+    <div class="ing-role">${r.role}</div>`;
+  rt.appendChild(row);
+});
+
+// Tab switching
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
