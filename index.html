@@ -379,7 +379,70 @@
     border-radius: 14px; overflow: hidden; margin-bottom: 16px;
   }
 
-  /* ── Stagger animation on load ── */
+  /* ── More Recipes ── */
+  .recipes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  @media(max-width: 620px) { .recipes-grid { grid-template-columns: 1fr; } }
+
+  .recipe-card {
+    background: var(--card);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .recipe-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0,0,0,.4);
+  }
+  .recipe-card-banner {
+    height: 7px;
+  }
+  .recipe-card-body { padding: 20px 20px 16px; }
+  .recipe-card-tag {
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    font-weight: 700; margin-bottom: 6px;
+  }
+  .recipe-card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700; color: var(--text);
+    margin-bottom: 4px; line-height: 1.2;
+  }
+  .recipe-card-desc {
+    font-size: 12px; color: var(--muted); font-style: italic;
+    margin-bottom: 16px; line-height: 1.5;
+  }
+  .recipe-card-ingredients { margin-bottom: 16px; }
+  .rc-ing-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 0; border-bottom: 1px solid var(--border);
+    gap: 10px;
+  }
+  .rc-ing-row:last-child { border-bottom: none; }
+  .rc-ing-left { display: flex; align-items: center; gap: 8px; }
+  .rc-ing-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .rc-ing-name { font-size: 13px; font-weight: 500; }
+  .rc-ing-note { font-size: 10.5px; color: var(--dim); font-style: italic; }
+  .rc-ing-amt  { font-size: 12px; font-weight: 600; color: var(--green); white-space: nowrap; }
+
+  .recipe-card-benefits {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px;
+  }
+  .rc-benefit {
+    font-size: 10px; padding: 3px 9px; border-radius: 12px;
+    background: rgba(82,183,136,.08); border: 1px solid rgba(82,183,136,.2);
+    color: var(--green3);
+  }
+  .recipe-card-tip {
+    background: rgba(0,0,0,.2); border-radius: 8px; padding: 10px 12px;
+    font-size: 11.5px; color: var(--muted); line-height: 1.55;
+  }
+  .recipe-card-tip strong { color: var(--green); display: block; margin-bottom: 2px; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+
+
   .ingredient-card {
     opacity: 0; transform: translateY(12px);
     animation: fadeUp .4s forwards;
@@ -406,6 +469,7 @@
   <button class="tab active" onclick="switchTab('ranking',this)">Ingredient Ranking</button>
   <button class="tab"        onclick="switchTab('recipe',this)">Ultimate Recipe</button>
   <button class="tab"        onclick="switchTab('shot',this)">My Power Shot</button>
+  <button class="tab"        onclick="switchTab('more',this)">More Recipes</button>
 </div>
 
 <div class="container">
@@ -574,6 +638,125 @@
         <div class="info-row"><strong>+ Lime instead of lemon</strong><span>Higher limonene content, sharper detox</span></div>
         <div class="info-row"><strong>+ Moringa powder pinch</strong><span>Extra liver detox + complete amino acids</span></div>
         <div class="info-row"><strong>+ Blood orange</strong><span>Anthocyanins add deep antioxidant layer</span></div>
+      </div>
+    </div>
+
+  </div><!-- end tab-shot -->
+
+  <!-- ── MORE RECIPES TAB ── -->
+  <div id="tab-more" class="tab-panel">
+
+    <p class="hint">4 crowd-favourite recipes — tasty, easy ingredients, real health benefits</p>
+
+    <div class="recipes-grid">
+
+      <!-- 1: Green Machine -->
+      <div class="recipe-card">
+        <div class="recipe-card-banner" style="background: linear-gradient(90deg,#2d6a4f,#52b788,#95d5b2)"></div>
+        <div class="recipe-card-body">
+          <div class="recipe-card-tag" style="color:#52b788">Everyday Green</div>
+          <div class="recipe-card-name">Green Machine</div>
+          <div class="recipe-card-desc">The classic daily green juice. Mild, refreshing, not bitter — even beginners love it.</div>
+          <div class="recipe-card-ingredients">
+            <div class="rc-ing-row"><div class="rc-ing-left"><div class="rc-ing-dot" style="background:#40916c"></div><div><div class="rc-ing-name">Cucumber</div><div class="rc-ing-note">Hydrating base</div></div></div><div class="rc-ing-amt">1 large</div></div>
+            <div class="rc-ing-row"><div class="rc-ing-left"><div class="rc-ing-dot" style="background:#74c69d"></div><div><div class="rc-ing-name">Celery</div><div class="rc-ing-note">Apigenin + natural sodium</div></div></div><div class="rc-ing-amt">4 stalks</div></div>
+            <div class="rc-ing-row"><div class="rc-ing-left"><div class="rc-ing-dot" style="background:#2d6a4f"></div><div><div class="rc-ing-name">Spinach</div><div class="rc-ing-note">Iron + folate, mild flavour</div></div></div><div class="rc-ing-amt">2 handfuls</div></div>
+            <div class="rc-ing-row"><div class="rc-ing-left"><div class="rc-ing-dot" style="background:#c1121f"></div><div><div class="rc-ing-name">Green Apple</div><div class="rc-ing-note">Quercetin + sweetness</div></div></div><div class="rc-ing-amt">1 medium</div></div>
+            <div class="rc-ing-row"><div class="rc-ing-left"><div class="rc-ing-dot" style="background:#e9c46a"></div><div><div class="rc-ing-name">Lemon</div><div class="rc-ing-note">Brightens + detox</div></div></div><div class="rc-ing-amt">½ peeled</div></div>
+            <div class="rc-ing-row"><div class="rc-ing-left"><div class="rc-ing-dot" style="background:#b5813e"></div><div><div class="rc-ing-name">Ginger</div><div class="rc-ing-note">Anti-inflammatory kick</div></div></div><div class="rc-ing-amt">½ inch</div></div>
+          </div>
+          <div class="recipe-card-benefits">
+            <span class="rc-benefit">Gut health</span>
+            <span class="rc-benefit">Energy</span>
+            <span class="rc-benefit">Alkalising</span>
+            <span class="rc-benefit">Skin glow</span>
+          </div>
+          <div class="recipe-card-tip"><strong>Pro tip</strong>Juice spinach between the cucumber slices — it won't juice well alone in a slow juicer. Yields ~400ml. Best drunk at breakfast on an empty stomach.</div>
+        </div>
+      </div>
+
+      <!-- 2: Sunrise Glow -->
+      <div class="recipe-card">
+        <div class="recipe-card-banner" style="background: linear-gradient(90deg,#f4a261,#e9c46a,#e07b39)"></div>
+        <div class="recipe-card-body">
+          <div class="recipe-card-tag" style="color:#e9c46a">Classic Favourite</div>
+          <div class="recipe-card-name">Sunrise Glow</div>
+          <div class="recipe-card-desc">Naturally sweet, gorgeous orange colour, and loaded with beta-carotene. The juice everyone loves.</div>
+          <div class="recipe-card-ingredients">
+            <div class="rc-ing-row"><div class="rc-ing-left"><div class="rc-ing-dot" style="background:#f4a261"></div><div><div class="rc-ing-name">Carrot</div><div class="rc-ing-note">Beta-carotene powerhouse</div></div></div><div class="rc-ing-amt">4 medium</div></div>
+            <div class="rc-ing-row"><div class="rc-ing-left"><div class="rc-ing-dot" style="background:#f7b731"></div><div><div class="rc-ing-name">Orange</div><div class="rc-ing-note">Vitamin C + hesperidin</div></div></div><div class="rc-ing-amt">2 peeled</div></div>
+            <div class="rc-ing-row"><div class="rc-ing-left"><div class="rc-ing-dot" style="background:#e07b39"></div><div><div class="rc-ing-name">Turmeric</div><div class="rc-ing-note">Anti-inflammatory</div></div></div><div class="rc-ing-amt">1 inch</div></div>
+            <div class="rc-ing-row"><div class="rc-ing-left"><div class="rc-ing-dot" style="background:#b5813e"></div><div><div class="rc-ing-name">Ginger</div><div class="rc-ing-note">Warmth + enzymes</div></div></div><div class="rc-ing-amt">¾ inch</div></div>
+            <div class="rc-ing-row"><div class="rc-ing-left"><div class="rc-ing-dot" style="background:#e9c46a"></div><div><div class="rc-ing-name">Lemon</div><div class="rc-ing-note">Balances sweetness</div></div></div><div class="rc-ing-amt">¼ peeled</div></div>
+          </div>
+          <div class="recipe-card-benefits">
+            <span class="rc-benefit">Eye health</span>
+            <span class="rc-benefit">Immune boost</span>
+            <span class="rc-benefit">Anti-inflammatory</span>
+            <span class="rc-benefit">Skin health</span>
+          </div>
+          <div class="recipe-card-tip"><strong>Pro tip</strong>Add a crack of black pepper to activate the turmeric. This is the most beginner-friendly juice — naturally sweet and zero bitterness. Great for kids too.</div>
+        </div>
+      </div>
+
+      <!-- 3: Beet Builder -->
+      <div class="recipe-card">
+        <div class="recipe-card-banner" style="background: linear-gradient(90deg,#9b2335,#c1121f,#b5424e)"></div>
+        <div class="recipe-card-body">
+          <div class="recipe-card-tag" style="color:#e07080">Performance & Detox</div>
+          <div class="recipe-card-name">Beet Builder</div>
+          <div class="recipe-card-desc">Deep, earthy, and powerful. Nitrates boost blood flow and stamina — popular with athletes and anyone wanting serious liver support.</div>
+          <div class="recipe-card-ingredients">
+            <div class="rc-ing-row"><div class="rc-ing-left"><div class="rc-ing-dot" style="background:#9b2335"></div><div><div class="rc-ing-name">Beetroot</div><div class="rc-ing-note">Nitrates + betalains</div></div></div><div class="rc-ing-amt">1 large</div></div>
+            <div class="rc-ing-row"><div class="rc-ing-left"><div class="rc-ing-dot" style="background:#f4a261"></div><div><div class="rc-ing-name">Carrot</div><div class="rc-ing-note">Sweetens + beta-carotene</div></div></div><div class="rc-ing-amt">2 medium</div></div>
+            <div class="rc-ing-row"><div class="rc-ing-left"><div class="rc-ing-dot" style="background:#c1121f"></div><div><div class="rc-ing-name">Apple</div><div class="rc-ing-note">Natural sweetness</div></div></div><div class="rc-ing-amt">1 medium</div></div>
+            <div class="rc-ing-row"><div class="rc-ing-left"><div class="rc-ing-dot" style="background:#b5813e"></div><div><div class="rc-ing-name">Ginger</div><div class="rc-ing-note">Cuts the earthiness</div></div></div><div class="rc-ing-amt">¾ inch</div></div>
+            <div class="rc-ing-row"><div class="rc-ing-left"><div class="rc-ing-dot" style="background:#e9c46a"></div><div><div class="rc-ing-name">Lemon</div><div class="rc-ing-note">Brightens + preserves</div></div></div><div class="rc-ing-amt">½ peeled</div></div>
+          </div>
+          <div class="recipe-card-benefits">
+            <span class="rc-benefit">Liver detox</span>
+            <span class="rc-benefit">Blood flow</span>
+            <span class="rc-benefit">Stamina</span>
+            <span class="rc-benefit">Blood pressure</span>
+          </div>
+          <div class="recipe-card-tip"><strong>Pro tip</strong>Drink 90 min before exercise for the nitrate benefit — studies show beet juice improves endurance by 2–3%. Start with half a beet if you're new to it; it's potent.</div>
+        </div>
+      </div>
+
+      <!-- 4: Tropical Cleanse -->
+      <div class="recipe-card">
+        <div class="recipe-card-banner" style="background: linear-gradient(90deg,#f7b731,#52b788,#74c69d)"></div>
+        <div class="recipe-card-body">
+          <div class="recipe-card-tag" style="color:#74c69d">Tropical Refresher</div>
+          <div class="recipe-card-name">Tropical Cleanse</div>
+          <div class="recipe-card-desc">Fruity, bright, and refreshing. Bromelain from pineapple makes this the best post-meal digestive juice in the list.</div>
+          <div class="recipe-card-ingredients">
+            <div class="rc-ing-row"><div class="rc-ing-left"><div class="rc-ing-dot" style="background:#f7b731"></div><div><div class="rc-ing-name">Pineapple</div><div class="rc-ing-note">Bromelain enzyme king</div></div></div><div class="rc-ing-amt">2 thick slices</div></div>
+            <div class="rc-ing-row"><div class="rc-ing-left"><div class="rc-ing-dot" style="background:#95d5b2"></div><div><div class="rc-ing-name">Cucumber</div><div class="rc-ing-note">Cooling + hydrating base</div></div></div><div class="rc-ing-amt">1 medium</div></div>
+            <div class="rc-ing-row"><div class="rc-ing-left"><div class="rc-ing-dot" style="background:#b5813e"></div><div><div class="rc-ing-name">Ginger</div><div class="rc-ing-note">Digestive synergy</div></div></div><div class="rc-ing-amt">¾ inch</div></div>
+            <div class="rc-ing-row"><div class="rc-ing-left"><div class="rc-ing-dot" style="background:#e9c46a"></div><div><div class="rc-ing-name">Lime</div><div class="rc-ing-note">Sharper than lemon + Vit C</div></div></div><div class="rc-ing-amt">½ peeled</div></div>
+            <div class="rc-ing-row"><div class="rc-ing-left"><div class="rc-ing-dot" style="background:#2d6a4f"></div><div><div class="rc-ing-name">Mint leaves</div><div class="rc-ing-note">Soothes gut + freshness</div></div></div><div class="rc-ing-amt">10–12 leaves</div></div>
+          </div>
+          <div class="recipe-card-benefits">
+            <span class="rc-benefit">Digestion</span>
+            <span class="rc-benefit">Anti-bloating</span>
+            <span class="rc-benefit">Hydration</span>
+            <span class="rc-benefit">Joint health</span>
+          </div>
+          <div class="recipe-card-tip"><strong>Pro tip</strong>Pack mint tightly between pineapple pieces to push it through. Best enjoyed 30 min after a heavy meal to help break down proteins. Serve over ice for maximum refreshment.</div>
+        </div>
+      </div>
+
+    </div><!-- end recipes-grid -->
+
+    <!-- Quick comparison -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-top:8px">
+      <div style="background:var(--green2);padding:12px 18px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#fff;font-weight:600">Quick Comparison — Pick Your Mood</div>
+      <div style="padding:4px 0">
+        <div class="info-row"><strong style="color:#52b788">Green Machine</strong><span>Best for: daily routine, gentle energy, skin — mildest taste</span></div>
+        <div class="info-row"><strong style="color:#e9c46a">Sunrise Glow</strong><span>Best for: immune support, beginners, naturally sweet — most crowd-pleasing</span></div>
+        <div class="info-row"><strong style="color:#e07080">Beet Builder</strong><span>Best for: pre-workout, liver detox, serious health goals — earthy & bold</span></div>
+        <div class="info-row"><strong style="color:#74c69d">Tropical Cleanse</strong><span>Best for: after heavy meals, digestion, hot weather — fruity & refreshing</span></div>
       </div>
     </div>
 
