@@ -227,6 +227,135 @@
   }
   .dose-box p { font-size: 12.5px; color: #c8b87a; line-height: 1.6; }
 
+  /* ── Timing box ── */
+  .timing-box {
+    margin-top: 8px;
+    background: rgba(82,183,136,.06);
+    border: 1px solid rgba(82,183,136,.2);
+    border-radius: 8px; padding: 10px 14px;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .timing-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .timing-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--green); font-weight: 700; margin-bottom: 3px; }
+  .timing-box p { font-size: 12px; color: #74c69d; line-height: 1.55; margin: 0; }
+
+  /* ── Caution box ── */
+  .caution-box {
+    margin-top: 8px;
+    background: rgba(233,100,80,.06);
+    border: 1px solid rgba(233,100,80,.25);
+    border-radius: 8px; padding: 10px 14px;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .caution-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: #e07060; font-weight: 700; margin-bottom: 3px; }
+  .caution-box p { font-size: 12px; color: #c08070; line-height: 1.55; margin: 0; }
+
+  /* ── Juice Builder ── */
+  .builder-layout { display: grid; grid-template-columns: 1fr 280px; gap: 20px; }
+  @media(max-width:680px) { .builder-layout { grid-template-columns: 1fr; } }
+
+  .builder-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+  }
+  .builder-tile {
+    background: var(--card); border: 1.5px solid var(--border);
+    border-radius: 12px; padding: 12px 10px;
+    cursor: pointer; text-align: center;
+    transition: all .2s; user-select: none;
+  }
+  .builder-tile:hover { border-color: var(--green2); background: var(--card2); }
+  .builder-tile.selected { background: var(--card2); }
+  .builder-tile .bt-name { font-size: 12px; font-weight: 600; margin-top: 6px; }
+  .builder-tile .bt-kind { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; color: var(--dim); }
+  .builder-tile .bt-score { font-size: 11px; font-weight: 700; margin-top: 4px; }
+  .builder-tile .bt-check { font-size: 14px; margin-top: 4px; opacity: 0; transition: opacity .2s; }
+  .builder-tile.selected .bt-check { opacity: 1; }
+
+  .builder-panel {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden;
+    position: sticky; top: 20px; align-self: start;
+  }
+  .builder-panel-header {
+    background: var(--green2); padding: 14px 18px;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: #fff; font-weight: 600;
+  }
+  .builder-panel-body { padding: 16px 18px; }
+  .builder-empty { text-align: center; color: var(--dim); font-size: 13px; font-style: italic; padding: 24px 0; }
+
+  .builder-score-ring {
+    text-align: center; margin-bottom: 16px; padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .builder-score-num {
+    font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 900; line-height: 1;
+  }
+  .builder-score-lbl { font-size: 10px; letter-spacing: 2px; color: var(--dim); text-transform: uppercase; margin-top: 4px; }
+
+  .builder-factor-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .builder-factor-lbl { font-size: 10px; color: var(--dim); width: 72px; text-align: right; }
+  .builder-factor-track { flex: 1; height: 6px; background: rgba(255,255,255,.05); border-radius: 3px; overflow: hidden; }
+  .builder-factor-fill { height: 100%; border-radius: 3px; transition: width .4s; }
+  .builder-factor-val { font-size: 10px; color: var(--green); width: 18px; text-align: right; }
+
+  .builder-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+  .builder-tag { font-size: 10px; padding: 3px 8px; border-radius: 10px; background: rgba(82,183,136,.1); border: 1px solid rgba(82,183,136,.2); color: var(--green3); }
+  .builder-selected-list { margin-top: 10px; }
+  .builder-selected-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); padding: 3px 0; }
+  .builder-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+  .builder-hint { font-size: 11px; color: var(--dim); text-align: center; margin-bottom: 14px; font-style: italic; }
+  .builder-timing-badge {
+    margin-top: 10px; padding: 8px 12px; border-radius: 8px;
+    background: rgba(82,183,136,.07); border: 1px solid rgba(82,183,136,.15);
+    font-size: 11.5px; color: var(--muted); text-align: center;
+  }
+  .builder-caution-badge {
+    margin-top: 6px; padding: 8px 12px; border-radius: 8px;
+    background: rgba(233,100,80,.06); border: 1px solid rgba(233,100,80,.2);
+    font-size: 11px; color: #c08070; text-align: center;
+  }
+  .builder-clear {
+    width: 100%; margin-top: 12px; padding: 8px;
+    background: rgba(255,255,255,.04); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--dim); font-size: 11px;
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+    transition: background .2s;
+  }
+  .builder-clear:hover { background: rgba(255,255,255,.08); color: var(--text); }
+
+  /* ── Guide Tab ── */
+  .guide-section { margin-bottom: 28px; }
+  .guide-section-title {
+    font-family: 'Playfair Display', serif; font-size: 18px;
+    color: var(--green); font-weight: 700; margin-bottom: 4px;
+  }
+  .guide-section-sub { font-size: 12px; color: var(--dim); font-style: italic; margin-bottom: 14px; }
+
+  .storage-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .storage-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px; border-top: 3px solid var(--accent, #52b788);
+  }
+  .storage-card-name { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .storage-card-duration { font-size: 20px; font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px; }
+  .storage-card-tip { font-size: 11.5px; color: var(--muted); line-height: 1.5; }
+
+  .supp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media(max-width:580px) { .supp-grid { grid-template-columns: 1fr; } }
+  .supp-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+  }
+  .supp-card-header { padding: 10px 16px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
+  .supp-row { padding: 10px 16px; border-bottom: 1px solid var(--border); font-size: 12.5px; }
+  .supp-row:last-child { border-bottom: none; }
+  .supp-row:nth-child(odd) { background: var(--card); }
+  .supp-row:nth-child(even) { background: var(--card2); }
+  .supp-row strong { color: var(--text); display: block; margin-bottom: 2px; }
+  .supp-row span { color: var(--muted); font-size: 11px; }
+
   .meta-badges { display: flex; flex-direction: column; gap: 8px; }
   .meta-badge {
     background: rgba(0,0,0,.2); border-radius: 8px;
@@ -576,6 +705,8 @@
   <button class="tab"        onclick="switchTab('recipe',this)">Ultimate Recipe</button>
   <button class="tab"        onclick="switchTab('shot',this)">My Power Shot</button>
   <button class="tab"        onclick="switchTab('more',this)">More Recipes</button>
+  <button class="tab"        onclick="switchTab('builder',this)">🧮 Juice Builder</button>
+  <button class="tab"        onclick="switchTab('guide',this)">📖 Guide</button>
 </div>
 
 <div class="container">
@@ -886,6 +1017,96 @@
 
   </div><!-- end tab-more -->
 
+  <!-- ── JUICE BUILDER TAB ── -->
+  <div id="tab-builder" class="tab-panel">
+    <p class="hint">Tap ingredients to build your custom blend — see your combined health score instantly</p>
+    <div class="builder-layout">
+      <div>
+        <p class="builder-hint">Select 2–6 ingredients</p>
+        <div class="builder-grid" id="builder-grid"></div>
+      </div>
+      <div class="builder-panel">
+        <div class="builder-panel-header">Your Blend Score</div>
+        <div class="builder-panel-body" id="builder-panel-body">
+          <div class="builder-empty">Tap ingredients on the left to start building your juice</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── GUIDE TAB ── -->
+  <div id="tab-guide" class="tab-panel">
+
+    <!-- Storage Duration -->
+    <div class="guide-section">
+      <div class="guide-section-title">🧊 Storage Duration</div>
+      <div class="guide-section-sub">How long your juice stays potent — and how to maximise it</div>
+      <div class="storage-grid">
+        <div class="storage-card" style="--accent:#e07b39">
+          <div class="storage-card-name" style="color:#e07b39">Turmeric/Ginger Shot</div>
+          <div class="storage-card-duration" style="color:#e9c46a">5–7 days</div>
+          <div class="storage-card-tip">Best in small dark glass bottles, filled to the brim. High antimicrobial content from ginger naturally preserves the blend. Shake before drinking — separation is normal.</div>
+        </div>
+        <div class="storage-card" style="--accent:#2d6a4f">
+          <div class="storage-card-name" style="color:#52b788">Green Juice (kale, celery, cucumber)</div>
+          <div class="storage-card-duration" style="color:#e9c46a">24–48 hrs</div>
+          <div class="storage-card-tip">Green juice oxidises fastest — chlorophyll degrades and enzymes die quickly. Drink same day for peak benefit. If storing, add a squeeze of lemon — Vitamin C slows oxidation.</div>
+        </div>
+        <div class="storage-card" style="--accent:#9b2335">
+          <div class="storage-card-name" style="color:#e07080">Beet/Carrot/Root Juice</div>
+          <div class="storage-card-duration" style="color:#e9c46a">2–3 days</div>
+          <div class="storage-card-tip">Root juices are more stable than greens. Betalains degrade after 48 hrs but are still present. Store in glass, not plastic — beet will stain and degrade faster in plastic.</div>
+        </div>
+        <div class="storage-card" style="--accent:#f7b731">
+          <div class="storage-card-name" style="color:#f7b731">Citrus Juice (lemon, orange)</div>
+          <div class="storage-card-duration" style="color:#e9c46a">2–3 days</div>
+          <div class="storage-card-tip">Vitamin C actually helps it self-preserve. Store refrigerated in a sealed glass container. Avoid pre-squeezing and leaving open — Vitamin C degrades with air exposure.</div>
+        </div>
+        <div class="storage-card" style="--accent:#f4a261">
+          <div class="storage-card-name" style="color:#f4a261">Mixed Veggie Juice</div>
+          <div class="storage-card-duration" style="color:#e9c46a">1–2 days</div>
+          <div class="storage-card-tip">The more ingredients, the faster degradation. Always add lemon as a natural preservative. Fill containers completely — oxygen is the enemy of fresh juice.</div>
+        </div>
+        <div class="storage-card" style="--accent:#74c69d">
+          <div class="storage-card-name" style="color:#74c69d">General Rule</div>
+          <div class="storage-card-duration" style="color:#e9c46a">Drink fresh!</div>
+          <div class="storage-card-tip">Cold-press slow juicers produce less oxidation than centrifugal — your juice lasts longer. Freeze in ice cube trays if you want to extend beyond 3 days (enzymes die but nutrients survive).</div>
+        </div>
+      </div>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--border);margin:28px 0"/>
+
+    <!-- Supplement vs Juice -->
+    <div class="guide-section">
+      <div class="guide-section-title">💊 Supplement vs Juice — When Is Food Enough?</div>
+      <div class="guide-section-sub">The honest answer to when you need a pill and when fresh juice is genuinely superior</div>
+      <div class="supp-grid">
+        <div class="supp-card">
+          <div class="supp-card-header" style="background:rgba(82,183,136,.15);color:var(--green)">✅ Juice Wins Here</div>
+          <div class="supp-row"><strong>Enzymes (Bromelain, Zingibain)</strong><span>Live enzymes cannot be effectively encapsulated — they degrade in capsule form and in stomach acid. Fresh juice is the only real delivery method.</span></div>
+          <div class="supp-row"><strong>Synergistic compounds</strong><span>Whole food contains hundreds of co-factors that work together. Isolated curcumin supplements lack the turmeric oil matrix that helps it absorb in whole juice.</span></div>
+          <div class="supp-row"><strong>Hydration + nutrients together</strong><span>Juice delivers micronutrients dissolved in water — absorbed faster and more completely than dry capsules taken with water.</span></div>
+          <div class="supp-row"><strong>Gut microbiome support</strong><span>Polyphenols and plant fibres (even in juice) feed beneficial gut bacteria — supplements can't replicate this ecosystem effect.</span></div>
+          <div class="supp-row"><strong>Phytonutrient diversity</strong><span>A single juice blend delivers 50–200+ distinct phytonutrients. No supplement stack can match this breadth affordably.</span></div>
+        </div>
+        <div class="supp-card">
+          <div class="supp-card-header" style="background:rgba(233,196,106,.1);color:var(--gold)">💊 Supplements Win Here</div>
+          <div class="supp-row"><strong>Vitamin D3</strong><span>Almost impossible to get therapeutic amounts from food or juice. If you're deficient (very common), supplementing 1000–2000 IU/day is non-negotiable.</span></div>
+          <div class="supp-row"><strong>Omega-3 (EPA/DHA)</strong><span>Plant juice gives ALA omega-3, but conversion to EPA/DHA is poor (~5%). If you don't eat oily fish 3x/week, a fish oil or algae omega-3 supplement is justified.</span></div>
+          <div class="supp-row"><strong>Magnesium</strong><span>Modern soil depletion means most produce has less magnesium than 50 years ago. Magnesium glycinate supplement fills this gap that juice alone often can't.</span></div>
+          <div class="supp-row"><strong>High-dose therapeutic curcumin</strong><span>For active inflammation (arthritis, injury), therapeutic doses of 500–1000mg curcumin/day require supplements — you'd need impractical amounts of fresh turmeric juice.</span></div>
+          <div class="supp-row"><strong>B12</strong><span>Entirely absent from plant foods. If plant-based or low in animal products, B12 supplementation is essential — no amount of green juice provides this.</span></div>
+        </div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-top:14px">
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:8px">The Bottom Line</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.7">Daily fresh juice covers your <strong style="color:var(--text)">anti-inflammatory, antioxidant, enzyme, and phytonutrient</strong> needs better than any supplement stack. But supplement your <strong style="color:var(--text)">Vitamin D3, Omega-3, and Magnesium</strong> regardless — these are nearly impossible to get from food alone at therapeutic levels. Think of juice as your daily foundation and targeted supplements as precision top-ups.</div>
+      </div>
+    </div>
+
+  </div>
+
   <!-- ── GLOSSARY — always visible below all tabs ── -->
   <div style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border)">
     <div style="text-align:center;margin-bottom:24px">
@@ -943,54 +1164,78 @@ const FACTORS = [
 ];
 
 const DATA = [
-  { rank:1,  name:'Kale',             kind:'Vegetable', compound:'Glucosinolates + Quercetin',
+  { rank:1,  name:'Kale', kind:'Vegetable', compound:'Glucosinolates + Quercetin',
     scores:[9,8,9,10,7], overall:8.65, hex:'#2d6a4f',
     why:'Activates liver Phase II detox enzymes via glucosinolates; densely packed with anti-inflammatory flavonoids and chlorophyll. One of the most nutrient-dense greens you can juice.',
-    dose:'3–5 large leaves (≈60–80g) daily. This gives ~50mg glucosinolates — the therapeutic threshold. Rotate with spinach weekly to avoid excess oxalates.' },
-  { rank:2,  name:'Turmeric',         kind:'Root',      compound:'Curcumin',
+    dose:'3–5 large leaves (≈60–80g) daily. Gives ~50mg glucosinolates — the therapeutic threshold. Rotate with spinach weekly to avoid excess oxalates.',
+    timing:'🌅 Morning on empty stomach — glucosinolates activate detox enzymes best without food competing for absorption. Allow 20 min before eating.',
+    caution:'High in Vitamin K — can interfere with blood thinners like Warfarin. Those with hypothyroidism should limit raw kale (cooking deactivates goitrogens; juicing does not).' },
+  { rank:2,  name:'Turmeric', kind:'Root', compound:'Curcumin',
     scores:[8,10,9,9,4], overall:8.60, hex:'#e07b39',
     why:'Curcumin is the most studied natural anti-inflammatory compound. Protects liver cells and stimulates bile production. Always add a pinch of black pepper — it boosts curcumin absorption by ~2000%.',
-    dose:'1–2 inch fresh knob (≈5–10g) daily. Provides ~50–100mg curcumin. Must be paired with black pepper. Dried powder alternative: ½ tsp = 1 inch fresh.' },
-  { rank:3,  name:'Beets',            kind:'Vegetable', compound:'Betalains + Betaine',
+    dose:'1–2 inch fresh knob (≈5–10g) daily. Provides ~50–100mg curcumin. Must be paired with black pepper. Dried powder: ½ tsp = 1 inch fresh.',
+    timing:'🌅 Morning with a small amount of fat (e.g. coconut water or nuts after) — curcumin is fat-soluble and absorbs significantly better alongside dietary fat.',
+    caution:'May slow blood clotting — avoid high doses before surgery. Can interact with blood thinners and diabetes medication. Gallstone sufferers should consult a doctor before juicing.' },
+  { rank:3,  name:'Beets', kind:'Vegetable', compound:'Betalains + Betaine',
     scores:[9,8,10,8,5], overall:8.40, hex:'#9b2335',
     why:'Betalains are elite antioxidants found almost nowhere else in nature. Betaine directly supports liver methylation — a critical detox pathway for processing hormones and heavy metals.',
-    dose:'½ to 1 medium beet (≈80–130g) daily. Start with ½ if new — beet is potent on the liver and may cause pink urine (harmless). Max 1 large beet/day long-term.' },
-  { rank:4,  name:'Ginger',           kind:'Root',      compound:'Gingerols + Shogaols',
+    dose:'½ to 1 medium beet (≈80–130g) daily. Start with ½ if new — beet is potent on the liver. Pink urine is harmless (beeturia). Max 1 large beet/day long-term.',
+    timing:'🏋️ 60–90 min before exercise — nitrates peak in blood ~1–2 hrs after consumption, boosting endurance. Or morning for liver detox benefit.',
+    caution:'High oxalate content — those with kidney stones (especially calcium oxalate) should limit intake. High natural sugar — diabetics should monitor portion size carefully.' },
+  { rank:4,  name:'Ginger', kind:'Root', compound:'Gingerols + Shogaols',
     scores:[9,9,7,8,8], overall:8.25, hex:'#b5813e',
-    why:'Gingerols and shogaols directly block inflammatory signalling pathways (COX-2, NF-κB). Also exceptionally rich in live digestive enzymes that are preserved beautifully by slow juicing.',
-    dose:'1–2 inch fresh knob (≈5–10g) daily. Studies use 2–4g for therapeutic anti-inflammatory effects. Old ginger = more potent; young ginger = more juice. Excess may cause heartburn.' },
-  { rank:5,  name:'Broccoli',         kind:'Vegetable', compound:'Sulforaphane',
+    why:'Gingerols and shogaols directly block inflammatory signalling pathways (COX-2, NF-κB). Also exceptionally rich in live digestive enzymes preserved beautifully by slow juicing.',
+    dose:'1–2 inch fresh knob (≈5–10g) daily. Studies use 2–4g for anti-inflammatory effects. Old ginger = more potent; young ginger = more juice.',
+    timing:'🌅 Morning or 🍽️ before/after meals — helps stimulate digestive enzymes and bile production pre-meal, or soothes the gut post-meal. Avoid on empty stomach if you have acid reflux.',
+    caution:'May enhance the effect of blood-thinning medications (aspirin, Warfarin). High doses (>5g/day) can cause heartburn or digestive upset in sensitive individuals.' },
+  { rank:5,  name:'Broccoli', kind:'Vegetable', compound:'Sulforaphane',
     scores:[8,8,9,9,5], overall:8.10, hex:'#40916c',
     why:'Sulforaphane is arguably the most potent natural inducer of liver detox enzymes. Cold-pressed slow juicing preserves more of the myrosinase enzyme needed to activate sulforaphane.',
-    dose:'½ cup florets (≈45g) daily is sufficient. The myrosinase enzyme activating sulforaphane is fragile — juice immediately and drink fresh. Broccoli sprouts (if available) give 10–100x more sulforaphane.' },
+    dose:'½ cup florets (≈45g) daily. Juice immediately and drink fresh — myrosinase is fragile. Broccoli sprouts give 10–100x more sulforaphane if available.',
+    timing:'🌅 Morning — sulforaphane activates detox enzyme production that runs throughout the day. Effects build over time with consistent daily intake.',
+    caution:'High in Vitamin K — monitor if on blood thinners. Like kale, contains goitrogens affecting thyroid — those with hypothyroidism should consult a doctor before consuming daily.' },
   { rank:6,  name:'Dandelion Greens', kind:'Vegetable', compound:'Taraxacin + Luteolin',
     scores:[8,7,10,8,6], overall:8.00, hex:'#52b788',
-    why:'A classical liver tonic used for centuries: stimulates bile flow, supports gallbladder function, and actively reduces hepatic inflammation. Hard to find but extraordinary if you can source it.',
-    dose:'1 small handful (≈30–40g) daily. Stronger liver effect than kale gram-for-gram. Best combined with something sweet (apple/carrot) to offset the bitterness. Avoid if on blood thinners.' },
-  { rank:7,  name:'Lemon',            kind:'Fruit',     compound:'Limonene + Hesperidin',
+    why:'A classical liver tonic used for centuries: stimulates bile flow, supports gallbladder function, and actively reduces hepatic inflammation.',
+    dose:'1 small handful (≈30–40g) daily. Stronger liver effect than kale gram-for-gram. Combine with something sweet to offset bitterness.',
+    timing:'🌅 Morning on empty stomach — bile stimulation is most effective before meals, priming the digestive system for the day.',
+    caution:'Avoid if taking diuretic medications — dandelion has its own diuretic effect and can cause dehydration or electrolyte imbalance. Also interacts with some antibiotics.' },
+  { rank:7,  name:'Lemon', kind:'Fruit', compound:'Limonene + Hesperidin',
     scores:[7,7,9,7,6], overall:7.40, hex:'#e9c46a',
-    why:'Limonene in lemon peel activates glutathione S-transferase, a key liver detox enzyme. Vitamin C further reduces oxidative stress and helps stabilise other ingredients in the juice.',
-    dose:'½ to 1 whole lemon (≈30–50ml juice) daily. Include a small piece of peel for the limonene. One lemon provides ~30–50mg Vitamin C — about 40–60% of daily needs.' },
-  { rank:8,  name:'Carrot',           kind:'Vegetable', compound:'Beta-Carotene + Falcarinol',
+    why:'Limonene in lemon peel activates glutathione S-transferase, a key liver detox enzyme. Vitamin C reduces oxidative stress and helps stabilise other ingredients in the juice.',
+    dose:'½ to 1 whole lemon (≈30–50ml juice) daily. Include a small piece of peel for limonene. One lemon provides ~30–50mg Vitamin C — about 40–60% of daily needs.',
+    timing:'🌅 Morning — warm lemon water or fresh lemon juice is one of the most evidence-backed morning rituals for liver priming and alkalising the digestive tract.',
+    caution:'Highly acidic — can erode tooth enamel over time. Always rinse mouth or drink through a straw. May interact with certain medications (like statins) due to citrus enzyme effects.' },
+  { rank:8,  name:'Carrot', kind:'Vegetable', compound:'Beta-Carotene + Falcarinol',
     scores:[8,7,7,7,5], overall:7.00, hex:'#f4a261',
     why:'Beta-carotene supports liver health and modulates immune response. Falcarinol, unique to carrots, has demonstrated direct anti-inflammatory and cancer-preventive properties in studies.',
-    dose:'1–2 medium carrots (≈100–160g) daily. Provides 4–8mg beta-carotene — at or above the optimal daily intake. Excess over months may cause harmless orange skin tint (carotenemia).' },
-  { rank:9,  name:'Celery',           kind:'Vegetable', compound:'Apigenin + Phthalides',
+    dose:'1–2 medium carrots (≈100–160g) daily. Provides 4–8mg beta-carotene. Excess over months may cause harmless orange skin tint (carotenemia).',
+    timing:'🌅 Morning or 🕐 any time — beta-carotene is fat-soluble so drink with or before a meal containing healthy fat for best absorption. Very flexible timing.',
+    caution:'Diabetics should monitor — carrots are relatively high GI. Very high long-term intake can cause carotenemia (harmless orange skin). Those on beta-blockers absorb more beta-carotene.' },
+  { rank:9,  name:'Celery', kind:'Vegetable', compound:'Apigenin + Phthalides',
     scores:[6,7,7,7,8], overall:6.90, hex:'#74c69d',
-    why:'Apigenin is a potent anti-inflammatory flavone. Phthalides regulate liver enzyme activity. Celery also delivers exceptional juice yield, making it an ideal hydrating base.',
-    dose:'3–4 stalks (≈120–160g) daily. Excellent as a juice base — high water content boosts yield for other ingredients. Contains natural sodium; those on low-sodium diets should monitor intake.' },
-  { rank:10, name:'Apple',            kind:'Fruit',     compound:'Quercetin + Malic Acid',
+    why:'Apigenin is a potent anti-inflammatory flavone. Phthalides regulate liver enzyme activity. Celery delivers exceptional juice yield, making it an ideal hydrating base.',
+    dose:'3–4 stalks (≈120–160g) daily. Excellent as a juice base. Contains natural sodium; those on low-sodium diets should monitor intake.',
+    timing:'🌅 Morning on empty stomach — celery juice alone (Anthony William protocol) has a large following for morning gut and liver benefits. Also good as a base any time of day.',
+    caution:'Contains natural sodium — those with high blood pressure or on a low-sodium diet should be aware. Celery is also a common allergen; those with allergies to birch pollen may react.' },
+  { rank:10, name:'Apple', kind:'Fruit', compound:'Quercetin + Malic Acid',
     scores:[7,7,7,7,5], overall:6.80, hex:'#c1121f',
-    why:'Quercetin suppresses pro-inflammatory cytokines. Malic acid supports liver energy metabolism. Green apple adds natural sweetness and helps balance the bitterness of dark greens.',
-    dose:'½ to 1 medium apple (≈80–150g) daily. Green apple (Granny Smith) has lower sugar and higher quercetin than red varieties. Keep skin on for maximum polyphenol content.' },
-  { rank:11, name:'Pineapple',        kind:'Fruit',     compound:'Bromelain',
+    why:'Quercetin suppresses pro-inflammatory cytokines. Malic acid supports liver energy metabolism. Green apple adds sweetness and helps balance the bitterness of dark greens.',
+    dose:'½ to 1 medium apple (≈80–150g) daily. Green apple (Granny Smith) has lower sugar and higher quercetin. Keep skin on for maximum polyphenol content.',
+    timing:'🕐 Any time — very flexible. Works especially well as a sweetener blended with greens or roots. Its malic acid also helps preserve other ingredients in the juice.',
+    caution:'Apple juice is higher in natural sugar than most vegetables — diabetics should limit to ½ apple per juice. Seeds contain trace amygdalin (cyanide precursor) — remove seeds before juicing.' },
+  { rank:11, name:'Pineapple', kind:'Fruit', compound:'Bromelain',
     scores:[6,8,5,6,10], overall:6.75, hex:'#f7b731',
-    why:'Bromelain is a powerful proteolytic enzyme complex with strong anti-inflammatory effects, particularly on joint tissue. Slow juicers preserve bromelain far better than centrifugal models.',
-    dose:'1–2 thick slices (≈80–120g) daily. Core contains highest bromelain concentration — include it when juicing. Best consumed 30 min after a meal for digestive benefit.' },
-  { rank:12, name:'Cucumber',         kind:'Vegetable', compound:'Fisetin + Cucurbitacins',
-    scores:[5,5,5,5,6],  overall:5.10, hex:'#95d5b2',
-    why:'Mild anti-inflammatory effects via fisetin. Lower nutrient density than the others, but serves an important role as a hydrating, enzyme-preserving base that amplifies other ingredients.',
-    dose:'½ to 1 whole cucumber (≈150–300g) daily. Primarily a base ingredient — not a therapeutic dose to worry about. English cucumber (thin-skinned) gives more juice than regular variety.' },
+    why:'Bromelain is a powerful proteolytic enzyme with strong anti-inflammatory effects, particularly on joint tissue. Slow juicers preserve bromelain far better than centrifugal models.',
+    dose:'1–2 thick slices (≈80–120g) daily. Core contains the highest bromelain concentration — include it when juicing. Best after a meal for digestive benefit.',
+    timing:'🍽️ After meals — bromelain works best as a digestive enzyme post-meal to break down proteins. For anti-inflammatory effects on joints, drink away from food on an empty stomach.',
+    caution:'May enhance blood-thinning medications. Avoid in high amounts during pregnancy (may stimulate uterine contractions). Can cause mouth soreness if consumed in very large quantities.' },
+  { rank:12, name:'Cucumber', kind:'Vegetable', compound:'Fisetin + Cucurbitacins',
+    scores:[5,5,5,5,6], overall:5.10, hex:'#95d5b2',
+    why:'Mild anti-inflammatory effects via fisetin. Lower nutrient density than others, but serves as a hydrating, enzyme-preserving base that amplifies other ingredients.',
+    dose:'½ to 1 whole cucumber (≈150–300g) daily. Primarily a base ingredient. English cucumber (thin-skinned) gives more juice.',
+    timing:'🕐 Any time — the most flexible ingredient on the list. Excellent rehydration base morning or evening. Very low sugar and calories so timing has minimal impact.',
+    caution:'Generally very safe. Rinse well as cucumber skin can carry pesticide residue — buy organic or peel if not. People with digestive sensitivity may find cucumber causes mild bloating.' },
 ];
 
 const RECIPE = [
@@ -1051,6 +1296,14 @@ DATA.forEach((ing, idx) => {
             <div class="dose-label">Daily Dose for Juicing</div>
             <p>${ing.dose}</p>
           </div>
+          <div class="timing-box">
+            <div class="timing-icon">⏰</div>
+            <div><div class="timing-label">Best Time to Drink</div><p>${ing.timing}</p></div>
+          </div>
+          <div class="caution-box">
+            <div class="timing-icon">⚠️</div>
+            <div><div class="caution-label">Caution & Interactions</div><p>${ing.caution}</p></div>
+          </div>
         </div>
         <div class="meta-badges">
           <div class="meta-badge">
@@ -1103,6 +1356,7 @@ function switchTab(name, btn) {
   document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
   btn.classList.add('active');
+  if (name === 'builder') initBuilder();
 }
 
 // Tappable factor pills
@@ -1110,6 +1364,118 @@ function togglePill(el) {
   const wasOpen = el.classList.contains('open');
   document.querySelectorAll('.factor-pill.open').forEach(p => p.classList.remove('open'));
   if (!wasOpen) el.classList.add('open');
+}
+
+// ── Juice Builder ──
+let builderSelected = [];
+let builderInitialised = false;
+
+function initBuilder() {
+  if (builderInitialised) return;
+  builderInitialised = true;
+  const grid = document.getElementById('builder-grid');
+  DATA.forEach(ing => {
+    const tile = document.createElement('div');
+    tile.className = 'builder-tile';
+    tile.style.borderColor = ing.hex + '55';
+    tile.innerHTML = `
+      <div style="width:28px;height:28px;border-radius:50%;background:${ing.hex};margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff">${ing.rank}</div>
+      <div class="bt-name">${ing.name}</div>
+      <div class="bt-kind">${ing.kind}</div>
+      <div class="bt-score" style="color:${ing.hex}">${ing.overall.toFixed(1)}</div>
+      <div class="bt-check" style="color:${ing.hex}">✓</div>`;
+    tile.addEventListener('click', () => {
+      const idx = builderSelected.indexOf(ing);
+      if (idx === -1) {
+        if (builderSelected.length >= 8) return;
+        builderSelected.push(ing);
+        tile.classList.add('selected');
+        tile.style.borderColor = ing.hex;
+      } else {
+        builderSelected.splice(idx, 1);
+        tile.classList.remove('selected');
+        tile.style.borderColor = ing.hex + '55';
+      }
+      updateBuilderPanel();
+    });
+    grid.appendChild(tile);
+  });
+}
+
+function updateBuilderPanel() {
+  const panel = document.getElementById('builder-panel-body');
+  if (builderSelected.length === 0) {
+    panel.innerHTML = '<div class="builder-empty">Tap ingredients on the left to start building your juice</div>';
+    return;
+  }
+
+  // Calculate average scores per factor
+  const factorAvg = FACTORS.map((f, i) => {
+    const avg = builderSelected.reduce((sum, ing) => sum + ing.scores[i], 0) / builderSelected.length;
+    return { ...f, avg };
+  });
+
+  // Weighted overall score
+  const weights = [0.20, 0.30, 0.25, 0.15, 0.10];
+  const blendScore = factorAvg.reduce((sum, f, i) => sum + f.avg * weights[i], 0);
+
+  // Collect unique benefits
+  const benefits = new Set();
+  builderSelected.forEach(ing => {
+    if (ing.overall >= 8.0) benefits.add('Elite Detox');
+    if (ing.scores[1] >= 8) benefits.add('Anti-Inflammatory');
+    if (ing.scores[2] >= 8) benefits.add('Liver Support');
+    if (ing.scores[0] >= 8) benefits.add('High Antioxidant');
+    if (ing.scores[4] >= 8) benefits.add('Enzyme Rich');
+    if (ing.scores[3] >= 9) benefits.add('Phytonutrient Dense');
+  });
+
+  // Timing consensus
+  const hasMorning = builderSelected.some(i => i.timing.includes('Morning'));
+  const hasAfterMeal = builderSelected.some(i => i.timing.includes('After meals') || i.timing.includes('after'));
+  const timingText = hasAfterMeal && !hasMorning ? '🍽️ Best after meals' : '🌅 Best in the morning on an empty stomach';
+
+  // Caution flags
+  const cautionIngredients = builderSelected.filter(i => i.caution.toLowerCase().includes('blood thin') || i.caution.toLowerCase().includes('warfarin') || i.caution.toLowerCase().includes('medication'));
+  const cautionText = cautionIngredients.length > 0
+    ? `⚠️ ${cautionIngredients.map(i => i.name).join(', ')} may interact with blood-thinning medications`
+    : '✅ No major interactions in this blend';
+
+  const color = blendScore >= 8 ? '#52b788' : blendScore >= 7 ? '#e9c46a' : '#74c69d';
+
+  const barsHTML = factorAvg.map(f => `
+    <div class="builder-factor-row">
+      <span class="builder-factor-lbl">${f.label}</span>
+      <div class="builder-factor-track"><div class="builder-factor-fill" style="width:${f.avg*10}%;background:${f.color}"></div></div>
+      <span class="builder-factor-val">${f.avg.toFixed(1)}</span>
+    </div>`).join('');
+
+  const listHTML = builderSelected.map(ing => `
+    <div class="builder-selected-item"><div class="builder-dot" style="background:${ing.hex}"></div>${ing.name}</div>`).join('');
+
+  const tagsHTML = [...benefits].map(b => `<div class="builder-tag">${b}</div>`).join('');
+
+  panel.innerHTML = `
+    <div class="builder-score-ring">
+      <div class="builder-score-num" style="color:${color}">${blendScore.toFixed(1)}</div>
+      <div class="builder-score-lbl">Blend Score</div>
+    </div>
+    ${barsHTML}
+    <div class="builder-tags">${tagsHTML}</div>
+    <div class="builder-selected-list">${listHTML}</div>
+    <div class="builder-timing-badge">${timingText}</div>
+    <div class="builder-caution-badge">${cautionText}</div>
+    <button class="builder-clear" onclick="clearBuilder()">Clear all</button>`;
+}
+
+function clearBuilder() {
+  builderSelected = [];
+  document.querySelectorAll('.builder-tile.selected').forEach(t => {
+    t.classList.remove('selected');
+    const ing = DATA.find(d => d.name === t.querySelector('.bt-name').textContent);
+    if (ing) t.style.borderColor = ing.hex + '55';
+  });
+  updateBuilderPanel();
 }
 </script>
 </body>
