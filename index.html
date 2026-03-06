@@ -283,6 +283,102 @@
     border-top: 1px solid var(--border);
   }
 
+  /* ── Power Shot ── */
+  .shot-hero {
+    background: linear-gradient(135deg, #1a1500, #2a1f00, #1a1500);
+    border: 1px solid #4a3800;
+    border-radius: 16px; padding: 32px 28px; text-align: center;
+    margin-bottom: 20px; position: relative; overflow: hidden;
+  }
+  .shot-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(233,196,106,.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .shot-hero .shot-eyebrow {
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 10px; font-weight: 600;
+  }
+  .shot-hero h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 4vw, 34px); font-weight: 900;
+    background: linear-gradient(135deg, #fff8e1, #e9c46a);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; margin-bottom: 8px;
+  }
+  .shot-hero p { font-size: 13px; color: #b8960c; font-style: italic; }
+
+  .shot-badges {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 8px; margin: 20px 0 0;
+  }
+  .shot-badge {
+    background: rgba(233,196,106,.1); border: 1px solid rgba(233,196,106,.25);
+    border-radius: 20px; padding: 5px 14px;
+    font-size: 11px; color: #e9c46a; font-weight: 600;
+  }
+
+  .shot-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;
+  }
+  @media(max-width:580px) { .shot-grid { grid-template-columns: 1fr; } }
+
+  .shot-card {
+    background: var(--card); border: 1px solid #3a2e00;
+    border-radius: 14px; overflow: hidden;
+  }
+  .shot-card-header {
+    background: linear-gradient(90deg, #3a2e00, #2a2000);
+    padding: 11px 16px; font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gold); font-weight: 600;
+  }
+
+  .ingredient-shot-row {
+    display: grid; grid-template-columns: 1fr 110px;
+    padding: 12px 16px; border-bottom: 1px solid #2a2000;
+    align-items: center; gap: 10px;
+  }
+  .ingredient-shot-row:last-child { border-bottom: none; }
+  .ingredient-shot-row:nth-child(odd)  { background: var(--card); }
+  .ingredient-shot-row:nth-child(even) { background: #131000; }
+  .shot-ing-name { font-size: 14px; font-weight: 600; }
+  .shot-ing-why  { font-size: 11px; color: #8a7a3a; margin-top: 2px; font-style: italic; }
+  .shot-ing-amt  {
+    font-size: 12px; font-weight: 700; color: var(--gold);
+    background: rgba(233,196,106,.1); border-radius: 6px;
+    padding: 4px 10px; text-align: center;
+  }
+
+  .prep-step {
+    display: flex; gap: 14px; padding: 14px 16px;
+    border-bottom: 1px solid #2a2000; align-items: flex-start;
+  }
+  .prep-step:last-child { border-bottom: none; }
+  .prep-step:nth-child(odd)  { background: var(--card); }
+  .prep-step:nth-child(even) { background: #131000; }
+  .prep-num {
+    width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+    background: var(--gold); color: #1a1000;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 800; margin-top: 1px;
+  }
+  .prep-step strong { font-size: 13px; color: var(--text); display: block; margin-bottom: 3px; }
+  .prep-step span   { font-size: 11.5px; color: #8a7a3a; line-height: 1.5; }
+
+  .science-row {
+    padding: 13px 16px; border-bottom: 1px solid #2a2000;
+  }
+  .science-row:last-child { border-bottom: none; }
+  .science-row:nth-child(odd)  { background: var(--card); }
+  .science-row:nth-child(even) { background: #131000; }
+  .science-row strong { font-size: 13px; color: #e9c46a; }
+  .science-row p { font-size: 12px; color: #8a7a6a; margin-top: 3px; line-height: 1.55; }
+
+  .shot-full-card {
+    background: var(--card); border: 1px solid #3a2e00;
+    border-radius: 14px; overflow: hidden; margin-bottom: 16px;
+  }
+
   /* ── Stagger animation on load ── */
   .ingredient-card {
     opacity: 0; transform: translateY(12px);
@@ -309,6 +405,7 @@
 <div class="tabs">
   <button class="tab active" onclick="switchTab('ranking',this)">Ingredient Ranking</button>
   <button class="tab"        onclick="switchTab('recipe',this)">Ultimate Recipe</button>
+  <button class="tab"        onclick="switchTab('shot',this)">My Power Shot</button>
 </div>
 
 <div class="container">
@@ -345,6 +442,141 @@
         <div class="info-row"><strong>💧 Pre-hydrate</strong><span>Drink water 30 min before</span></div>
       </div>
     </div>
+  </div>
+
+  <!-- ── POWER SHOT TAB ── -->
+  <div id="tab-shot" class="tab-panel">
+
+    <div class="shot-hero">
+      <div class="shot-eyebrow">Your Personal Formula</div>
+      <h2>The Anti-Inflammation Power Shot</h2>
+      <p>Daily shot · Weekly batch prep · 5 elite ingredients</p>
+      <div class="shot-badges">
+        <div class="shot-badge">Anti-Inflammatory</div>
+        <div class="shot-badge">Liver Detox</div>
+        <div class="shot-badge">Immune Boost</div>
+        <div class="shot-badge">Digestive Enzymes</div>
+        <div class="shot-badge">Antioxidant-Rich</div>
+      </div>
+    </div>
+
+    <!-- Ingredients + Science side by side -->
+    <div class="shot-grid">
+
+      <!-- Ingredients -->
+      <div class="shot-full-card">
+        <div class="shot-card-header">Ingredients (per shot)</div>
+        <div class="ingredient-shot-row">
+          <div><div class="shot-ing-name" style="color:#e07b39">Turmeric</div><div class="shot-ing-why">Core anti-inflammatory</div></div>
+          <div class="shot-ing-amt">1 inch knob</div>
+        </div>
+        <div class="ingredient-shot-row">
+          <div><div class="shot-ing-name" style="color:#b5813e">Ginger</div><div class="shot-ing-why">Blocks COX-2 pathways</div></div>
+          <div class="shot-ing-amt">1 inch knob</div>
+        </div>
+        <div class="ingredient-shot-row">
+          <div><div class="shot-ing-name" style="color:#e9c46a">Lemon</div><div class="shot-ing-why">Detox activator + Vit C</div></div>
+          <div class="shot-ing-amt">½ lemon</div>
+        </div>
+        <div class="ingredient-shot-row">
+          <div><div class="shot-ing-name" style="color:#f4a261">Orange</div><div class="shot-ing-why">Hesperidin + sweetness</div></div>
+          <div class="shot-ing-amt">½ orange</div>
+        </div>
+        <div class="ingredient-shot-row">
+          <div><div class="shot-ing-name" style="color:#c8a96e">Black Pepper</div><div class="shot-ing-why">Piperine — curcumin x2000%</div></div>
+          <div class="shot-ing-amt">2–3 cracks</div>
+        </div>
+      </div>
+
+      <!-- Why it works -->
+      <div class="shot-full-card">
+        <div class="shot-card-header">Why This Combo Works</div>
+        <div class="science-row">
+          <strong>Turmeric + Black Pepper</strong>
+          <p>Piperine in black pepper inhibits liver enzymes that would normally break down curcumin too fast — boosting its bioavailability by up to 2000%. This pairing is scientifically validated.</p>
+        </div>
+        <div class="science-row">
+          <strong>Ginger + Turmeric</strong>
+          <p>Both block the same NF-κB inflammatory pathway but via different mechanisms — gingerols and curcumin together create a synergistic anti-inflammatory effect stronger than either alone.</p>
+        </div>
+        <div class="science-row">
+          <strong>Lemon + Orange</strong>
+          <p>Vitamin C from citrus stabilises curcumin and improves iron absorption. Hesperidin in orange peel adds its own anti-inflammatory flavonoid action.</p>
+        </div>
+        <div class="science-row">
+          <strong>Shot format</strong>
+          <p>Concentrated small volume means higher bioactive density per ml. Your gut absorbs it faster on an empty stomach with less dilution.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Weekly Prep Guide - full width -->
+    <div class="shot-full-card" style="margin-bottom:16px">
+      <div class="shot-card-header">Weekly Batch Prep Guide (7 days)</div>
+      <div class="prep-step">
+        <div class="prep-num">1</div>
+        <div>
+          <strong>Scale up the batch</strong>
+          <span>Multiply each ingredient x7: ~7 turmeric knobs, ~7 ginger knobs, 3–4 lemons, 3–4 oranges. Keep black pepper separate — add fresh each serving.</span>
+        </div>
+      </div>
+      <div class="prep-step">
+        <div class="prep-num">2</div>
+        <div>
+          <strong>Juice in this order</strong>
+          <span>Ginger first → Turmeric → Lemon → Orange. Citrus last to flush all the turmeric residue through the drum and protect the slow juicer.</span>
+        </div>
+      </div>
+      <div class="prep-step">
+        <div class="prep-num">3</div>
+        <div>
+          <strong>Store in small dark glass bottles</strong>
+          <span>Fill to the brim to minimise air contact. Amber or dark green glass is ideal. Avoid plastic — turmeric oils degrade faster and stain plastic permanently.</span>
+        </div>
+      </div>
+      <div class="prep-step">
+        <div class="prep-num">4</div>
+        <div>
+          <strong>Refrigerate immediately</strong>
+          <span>Store at 2–4°C. Potency is highest days 1–3, still very good days 4–5, and adequate through day 7. Shake well before each use as separation is natural.</span>
+        </div>
+      </div>
+      <div class="prep-step">
+        <div class="prep-num">5</div>
+        <div>
+          <strong>Daily serving ritual</strong>
+          <span>Take one 60–80ml shot each morning on an empty stomach. Add 2–3 cracks of black pepper directly into the shot glass. Wait 15–20 min before eating for maximum absorption.</span>
+        </div>
+      </div>
+      <div class="prep-step">
+        <div class="prep-num">6</div>
+        <div>
+          <strong>Clean the juicer immediately</strong>
+          <span>Turmeric stains within minutes. Rinse all parts with cold water right after juicing, then wash with soap. A little baking soda removes any yellow staining.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Storage + Tips side by side -->
+    <div class="shot-grid">
+      <div class="shot-card">
+        <div class="shot-card-header">Storage Tips</div>
+        <div class="info-row"><strong>Best consumed: Days 1–3</strong><span>Peak enzyme and curcumin potency</span></div>
+        <div class="info-row"><strong>Still good: Days 4–5</strong><span>Slight flavour softening, nutrients intact</span></div>
+        <div class="info-row"><strong>Acceptable: Days 6–7</strong><span>Use it up — make fresh on day 7</span></div>
+        <div class="info-row"><strong>Container: Dark glass, airtight</strong><span>50–100ml swing-top bottles are ideal</span></div>
+        <div class="info-row"><strong>Temperature: 2–4°C fridge</strong><span>Never freeze — degrades enzymes</span></div>
+      </div>
+      <div class="shot-card">
+        <div class="shot-card-header">Level-Up Options</div>
+        <div class="info-row"><strong>+ Cayenne pinch</strong><span>Adds capsaicin — another COX-2 inhibitor</span></div>
+        <div class="info-row"><strong>+ Manuka honey drop</strong><span>Antimicrobial + softens the heat</span></div>
+        <div class="info-row"><strong>+ Lime instead of lemon</strong><span>Higher limonene content, sharper detox</span></div>
+        <div class="info-row"><strong>+ Moringa powder pinch</strong><span>Extra liver detox + complete amino acids</span></div>
+        <div class="info-row"><strong>+ Blood orange</strong><span>Anthocyanins add deep antioxidant layer</span></div>
+      </div>
+    </div>
+
   </div>
 
 </div>
