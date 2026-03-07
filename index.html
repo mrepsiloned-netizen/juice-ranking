@@ -175,6 +175,13 @@
     background: rgba(255,255,255,.05); margin: 3px 0 4px;
     text-transform: uppercase;
   }
+  .addin-pill {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 9px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; padding: 2px 8px; border-radius: 10px;
+    background: rgba(233,196,106,.12); border: 1px solid rgba(233,196,106,.3);
+    color: #e9c46a; margin-top: 2px;
+  }
   .card-info .compound { font-size: 11px; color: var(--muted); font-style: italic; }
 
   .score-bars { display: flex; flex-direction: column; gap: 4px; }
@@ -703,6 +710,7 @@
 <div class="tabs">
   <button class="tab active" onclick="switchTab('ranking',this)">Ingredient Ranking</button>
   <button class="tab"        onclick="switchTab('shot',this)">⚡ GinTurLemon Shot</button>
+  <button class="tab"        onclick="switchTab('powder',this)">🌿 Powder Blend</button>
   <button class="tab"        onclick="switchTab('more',this)">More Recipes</button>
   <button class="tab"        onclick="switchTab('builder',this)">🧮 Juice Builder</button>
   <button class="tab"        onclick="switchTab('guide',this)">📖 Guide</button>
@@ -851,6 +859,105 @@
     </div>
 
   </div><!-- end tab-shot -->
+
+  <!-- ── POWDER BLEND TAB ── -->
+  <div id="tab-powder" class="tab-panel">
+
+    <!-- Hero -->
+    <div class="shot-hero" style="background:linear-gradient(135deg,#0a1a0f,#0d2010,#0a1a0f);border-color:#1a3a1a">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(10,147,150,.1) 0%,transparent 70%);pointer-events:none"></div>
+      <div class="shot-eyebrow" style="color:#0a9396">Your Personal Morning Protocol</div>
+      <h2 style="background:linear-gradient(135deg,#d4f1f4,#0a9396);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">The Green Power Blend</h2>
+      <p style="color:#52b788;font-style:italic">Ginseng · Moringa · Spirulina · Wheatgrass &nbsp;·&nbsp; Stir into water or fresh juice</p>
+      <div class="shot-badges">
+        <div class="shot-badge" style="background:rgba(10,147,150,.1);border-color:rgba(10,147,150,.3);color:#0a9396">Adaptogenic Energy</div>
+        <div class="shot-badge" style="background:rgba(10,147,150,.1);border-color:rgba(10,147,150,.3);color:#0a9396">Deep Liver Detox</div>
+        <div class="shot-badge" style="background:rgba(10,147,150,.1);border-color:rgba(10,147,150,.3);color:#0a9396">Anti-Inflammatory</div>
+        <div class="shot-badge" style="background:rgba(10,147,150,.1);border-color:rgba(10,147,150,.3);color:#0a9396">Immune Support</div>
+        <div class="shot-badge" style="background:rgba(10,147,150,.1);border-color:rgba(10,147,150,.3);color:#0a9396">Mental Clarity</div>
+      </div>
+    </div>
+
+    <!-- Powder cards -->
+    <div class="shot-grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">
+
+      <div class="shot-card" style="border-color:#1a3a3a">
+        <div class="shot-card-header" style="background:rgba(10,147,150,.15);color:#0a9396">
+          🌱 Spirulina Powder
+        </div>
+        <div class="info-row"><strong style="color:#0a9396">Key compound</strong><span>Phycocyanin — rare blue pigment, direct NF-κB blocker</span></div>
+        <div class="info-row"><strong style="color:#0a9396">Dose</strong><span>1 tsp (3–5g) per glass. Build up slowly from ½ tsp</span></div>
+        <div class="info-row"><strong style="color:#0a9396">Superpower</strong><span>Gram-for-gram the most nutrient-dense food on earth. More protein than beef by weight, complete amino acid profile</span></div>
+        <div class="info-row"><strong style="color:#0a9396">Pair with</strong><span>Orange, carrot or pineapple juice — sweetness masks the sea-vegetable flavour</span></div>
+        <div class="info-row"><strong style="color:#e07060">Watch out</strong><span>Buy certified brands only — contamination risk from uncertified sources</span></div>
+      </div>
+
+      <div class="shot-card" style="border-color:#2a3a1a">
+        <div class="shot-card-header" style="background:rgba(96,108,56,.2);color:#8fb339">
+          🌿 Moringa Powder
+        </div>
+        <div class="info-row"><strong style="color:#8fb339">Key compound</strong><span>Isothiocyanates — activates liver Phase II detox, same pathway as broccoli sulforaphane</span></div>
+        <div class="info-row"><strong style="color:#8fb339">Dose</strong><span>1 tsp (2–3g) per glass. Mild earthy flavour, very mixable</span></div>
+        <div class="info-row"><strong style="color:#8fb339">Superpower</strong><span>7× more Vitamin C than orange, 4× more calcium than milk, 25% protein by weight. Called the "miracle tree" across Southeast Asia for a reason</span></div>
+        <div class="info-row"><strong style="color:#8fb339">Pair with</strong><span>Lemon, guava or green apple juice. Also works well in the GinTurLemon Shot as a liver-boost add-in</span></div>
+        <div class="info-row"><strong style="color:#e07060">Watch out</strong><span>Avoid during pregnancy. May lower blood pressure — monitor if on antihypertensives</span></div>
+      </div>
+
+      <div class="shot-card" style="border-color:#1a3a1a">
+        <div class="shot-card-header" style="background:rgba(56,102,65,.2);color:#52b788">
+          🌾 Wheatgrass Powder
+        </div>
+        <div class="info-row"><strong style="color:#52b788">Key compound</strong><span>Chlorophyll + Superoxide Dismutase (SOD) — the antioxidant enzyme that fights ageing-linked free radicals</span></div>
+        <div class="info-row"><strong style="color:#52b788">Dose</strong><span>1 tsp (3–5g) per glass. Strong flavour — pair with sweet juice</span></div>
+        <div class="info-row"><strong style="color:#52b788">Superpower</strong><span>Chlorophyll is structurally near-identical to haemoglobin — supports blood oxygenation, alkalises the body, and actively binds heavy metals in the gut for excretion</span></div>
+        <div class="info-row"><strong style="color:#52b788">Pair with</strong><span>Orange, carrot or pineapple juice. Avoid mixing with very dark juices (beet) — the colour becomes unappetising</span></div>
+        <div class="info-row"><strong style="color:#e07060">Watch out</strong><span>Very detoxifying — some experience mild nausea initially. Start with ½ tsp. Verify gluten-free if coeliac</span></div>
+      </div>
+
+      <div class="shot-card" style="border-color:#3a2a0a">
+        <div class="shot-card-header" style="background:rgba(201,168,76,.15);color:#c9a84c">
+          🫚 Ginseng Powder
+        </div>
+        <div class="info-row"><strong style="color:#c9a84c">Key compound</strong><span>Ginsenosides — unique to ginseng, regulate cortisol and improve mitochondrial energy efficiency</span></div>
+        <div class="info-row"><strong style="color:#c9a84c">Dose</strong><span>½–1 tsp (1–2g) per glass. Use in 3-week on / 1-week off cycles</span></div>
+        <div class="info-row"><strong style="color:#c9a84c">Superpower</strong><span>The only true adaptogen in this blend — it physically lowers your stress response at the hormonal level while providing non-jittery, sustained mental clarity and focus. Not a stimulant; it works with your adrenals, not against them</span></div>
+        <div class="info-row"><strong style="color:#c9a84c">Pair with</strong><span>Any juice works. Especially good in the GinTurLemon Shot — ginseng and ginger are synergistic for circulation and energy</span></div>
+        <div class="info-row"><strong style="color:#e07060">Watch out</strong><span>Avoid after 2pm (may affect sleep). Interacts with blood thinners and diabetes meds. Buy from reputable kedai ubat Cina or certified brands</span></div>
+      </div>
+
+    </div>
+
+    <!-- Synergy section -->
+    <div style="background:var(--card);border:1px solid rgba(10,147,150,.25);border-radius:14px;overflow:hidden;margin-top:4px">
+      <div style="background:rgba(10,147,150,.15);padding:12px 18px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#0a9396;font-weight:700">Why These 4 Work Together</div>
+      <div style="padding:4px 0">
+        <div class="info-row"><strong style="color:#d4f1f4">Ginseng + Spirulina</strong><span>Ginseng regulates cortisol (stress hormone) while spirulina provides the dense micronutrients needed for cellular repair. One manages the stress response, the other fuels recovery — a genuine energy system pairing.</span></div>
+        <div class="info-row"><strong style="color:#d4f1f4">Moringa + Wheatgrass</strong><span>Both activate liver detox enzymes (Phase I &amp; II) but through different pathways — moringa via isothiocyanates, wheatgrass via chlorophyll and SOD. Together they cover the full detox cycle more completely than either alone.</span></div>
+        <div class="info-row"><strong style="color:#d4f1f4">All 4 together</strong><span>This is a full-spectrum morning protocol: adaptogenic stress control (ginseng) + cellular nutrition (spirulina) + liver detox (moringa + wheatgrass) + antioxidant protection (all four). Each covers a gap the others don't.</span></div>
+      </div>
+    </div>
+
+    <!-- Protocol guide -->
+    <div class="shot-grid" style="margin-top:16px;grid-template-columns:1fr 1fr">
+      <div class="shot-card" style="border-color:#1a3a1a">
+        <div class="shot-card-header" style="background:rgba(82,183,136,.12);color:#52b788">Morning Protocol</div>
+        <div class="info-row"><strong>Step 1 — Empty stomach</strong><span>Mix all 4 powders into 200–300ml of room-temp water or fresh juice</span></div>
+        <div class="info-row"><strong>Step 2 — Stir vigorously</strong><span>Use a shaker bottle or small whisk — powders clump if just stirred with a spoon</span></div>
+        <div class="info-row"><strong>Step 3 — Drink immediately</strong><span>Chlorophyll and enzymes degrade with air and light — don't let it sit</span></div>
+        <div class="info-row"><strong>Step 4 — Wait 20–30 min</strong><span>Before eating breakfast to allow full absorption on an empty gut</span></div>
+        <div class="info-row"><strong>Best juice base</strong><span>Orange or carrot juice — sweetness balances the earthy green flavours and Vitamin C stabilises the chlorophyll</span></div>
+      </div>
+      <div class="shot-card" style="border-color:#1a3a1a">
+        <div class="shot-card-header" style="background:rgba(82,183,136,.12);color:#52b788">Suggested Daily Amounts</div>
+        <div class="info-row"><strong style="color:#0a9396">Spirulina</strong><span>1 tsp (3–5g)</span></div>
+        <div class="info-row"><strong style="color:#8fb339">Moringa</strong><span>1 tsp (2–3g)</span></div>
+        <div class="info-row"><strong style="color:#52b788">Wheatgrass</strong><span>1 tsp (3–5g)</span></div>
+        <div class="info-row"><strong style="color:#c9a84c">Ginseng</strong><span>½–1 tsp (1–2g) — cycle 3 weeks on, 1 week off</span></div>
+        <div class="info-row"><strong style="color:#e9c46a">Total blend</strong><span>≈4 tsp in one glass — earthy, grassy, slightly bitter. A sweet juice base is essential for palatability</span></div>
+      </div>
+    </div>
+
+  </div><!-- end tab-powder -->
 
   <!-- ── MORE RECIPES TAB ── -->
   <div id="tab-more" class="tab-panel">
@@ -1258,6 +1365,42 @@ const DATA = [
     dose:'½ to 1 whole cucumber (≈150–300g) daily. Primarily a base ingredient. The long thin variety (timun biasa) gives more juice than the short fat type.',
     timing:'🕐 Any time — the most flexible ingredient on the list. Excellent rehydration base morning or evening. Very low sugar so timing has minimal impact.',
     caution:'Generally very safe. Rinse well — cucumber skin can carry pesticide residue. Buy organic or peel if concerned. Mild digestive sensitivity possible in some people.' },
+
+  // ── ADD-INS: stir into juice, do not juice directly ──
+  { rank:16, name:'Spirulina', kind:'Add-in Powder', compound:'Phycocyanin + Chlorophyll', malay:'Spirulina',
+    scores:[9,9,8,10,6], overall:8.80, hex:'#0a9396',
+    why:'Spirulina is gram-for-gram one of the most nutrient-dense foods on earth. Phycocyanin is a rare blue pigment with extraordinary anti-inflammatory and antioxidant power — it directly scavenges free radicals and inhibits NF-κB. Chlorophyll content is among the highest of any food, supporting liver detox. 1 tsp delivers more protein, iron and B-vitamins than almost any comparable volume of food.',
+    dose:'1 tsp (≈3–5g) per glass of juice. Start with ½ tsp if new — the taste is strong. Build up over 1–2 weeks. Available at health stores, Jaya Grocer, online (Lazada/Shopee).',
+    timing:'🌅 Morning — spirulina\u2019s dense nutrient profile and energising B-vitamins make it ideal first thing. Stir into carrot, orange or pineapple juice to mask the flavour.',
+    caution:'Avoid if on immunosuppressants — spirulina strongly stimulates the immune system. Those with phenylketonuria (PKU) must avoid it. Buy from reputable brands only — contaminated spirulina can contain harmful toxins.' },
+
+  { rank:17, name:'Moringa', kind:'Add-in Powder', compound:'Isothiocyanates + Quercetin', malay:'Moringa / Kelor',
+    scores:[8,8,9,9,5], overall:8.30, hex:'#606c38',
+    why:'Moringa is called the "miracle tree" across Southeast Asia for good reason. It contains 7× more Vitamin C than orange, 4× more calcium than milk, and 2× more protein than yoghurt. Isothiocyanates are potent liver detox activators — identical pathway to broccoli\u2019s sulforaphane. Moringa (pokok kelor) is deeply rooted in Malaysian traditional medicine and extremely affordable locally.',
+    dose:'1 tsp (≈2–3g) per glass of juice. Mild earthy flavour that blends easily with green or citrus juices. Available at most Malaysian health stores, pasar tani, and online.',
+    timing:'🌅 Morning — liver-activating isothiocyanates work best on an empty stomach. Excellent blended into lemon, guava or green apple juice to complement the earthy taste.',
+    caution:'Avoid during pregnancy — moringa has traditionally been used to stimulate contractions (especially root/bark; leaf powder is milder but still caution advised). May lower blood pressure — monitor if on antihypertensives.' },
+
+  { rank:18, name:'Wheatgrass', kind:'Add-in Powder', compound:'Chlorophyll + SOD Enzyme', malay:'Wheatgrass',
+    scores:[8,7,9,9,7], overall:8.05, hex:'#386641',
+    why:'Wheatgrass is one of the richest chlorophyll sources available in powder form. Chlorophyll is structurally nearly identical to haemoglobin and supports blood oxygenation and liver detox. Superoxide dismutase (SOD) is a powerful antioxidant enzyme that fights the specific free radicals linked to ageing and inflammation. Wheatgrass powder preserves most of these benefits without the difficulty of juicing fresh grass.',
+    dose:'1 tsp (≈3–5g) per glass of juice. Very strong flavour — always mix into something sweet (orange, carrot, pineapple) or citrus-forward. Available at health stores and online in Malaysia.',
+    timing:'🌅 Morning on empty stomach — chlorophyll and SOD are most effective before food. This is the classic "wheatgrass shot" timing used globally. Wait 20–30 min before eating.',
+    caution:'Generally safe. Celiacs should verify brand is gluten-free (the grass itself is gluten-free but cross-contamination in processing is possible). Very detoxifying — some people experience mild nausea initially; start with ½ tsp.' },
+
+  { rank:19, name:'Chia Seeds', kind:'Add-in Seed', compound:'Omega-3 ALA + Quercetin', malay:'Biji Chia',
+    scores:[7,7,6,7,4], overall:6.55, hex:'#6c584c',
+    why:'Chia seeds do not juice — they are stirred into finished juice. They are one of the richest plant sources of omega-3 fatty acids (ALA), which the body partially converts to the anti-inflammatory EPA/DHA. The fat content also makes chia an ideal partner for fat-soluble compounds in juice — curcumin, beta-carotene and lycopene all absorb significantly better when consumed alongside the healthy fat in chia seeds.',
+    dose:'1 tbsp (≈12–15g) stirred into a glass of juice. Let soak 5–10 min to form a gel — this slows sugar absorption and extends satiety. Widely available in Malaysia at all major supermarkets.',
+    timing:'🌅 Morning or 🍽️ with meals — the fat in chia seeds boosts absorption of curcumin (turmeric), beta-carotene (carrot) and lycopene (papaya/tomato) in the same juice. Ideal in carrot-orange or turmeric-based juices.',
+    caution:'Drink plenty of water — chia absorbs up to 12× its weight in liquid and can cause digestive discomfort if consumed dry. Those on blood thinners should moderate intake as omega-3 has mild blood-thinning properties.' },
+
+  { rank:20, name:'Ginseng', kind:'Add-in Powder', compound:'Ginsenosides + Panaxosides', malay:'Ginseng',
+    scores:[8,8,7,8,6], overall:7.75, hex:'#c9a84c',
+    why:'Ginseng is one of the most comprehensively researched adaptogens in the world. Ginsenosides — unique to ginseng — regulate cortisol, reduce systemic inflammation, and support adrenal function. It genuinely combats fatigue at a cellular level by improving mitochondrial efficiency. Korean red ginseng is the most studied and potent; American ginseng is milder and more calming. Both are widely available in Malaysia in powder form at health stores and Chinese medicine shops (kedai ubat Cina).',
+    dose:'½ to 1 tsp (≈1–2g) powder stirred into juice daily. Start low — ginseng is potent and more is not better. Best used in 3-week cycles (3 weeks on, 1 week off) to prevent tolerance.',
+    timing:'🌅 Morning — ginsenosides provide sustained, non-jittery energy and mental clarity throughout the day. Avoid after 2pm as it can interfere with sleep in sensitive individuals.',
+    caution:'Avoid with blood thinners (Warfarin), diabetes medication (may lower blood sugar), and immunosuppressants. Not recommended during pregnancy. May cause insomnia, headache or palpitations at high doses. Choose reputable brands — ginseng is frequently adulterated.' },
 ];
 
 function scoreColor(v) {
@@ -1290,6 +1433,7 @@ DATA.forEach((ing, idx) => {
         <div class="name">${ing.name}</div>
         ${ing.malay ? `<div style="font-size:10px;color:var(--dim);font-style:italic;margin-bottom:2px">${ing.malay}</div>` : ''}
         <div class="kind-badge" style="color:${ing.hex}">${ing.kind}</div>
+        ${ing.kind.includes('Add-in') ? `<div class="addin-pill">✦ Stir in — do not juice</div>` : ''}
         <div class="compound">${ing.compound}</div>
       </div>
       <div class="score-bars">${barsHTML}</div>
@@ -1381,6 +1525,7 @@ function initBuilder() {
       <div style="width:28px;height:28px;border-radius:50%;background:${ing.hex};margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff">${ing.rank}</div>
       <div class="bt-name">${ing.name}</div>
       <div class="bt-kind">${ing.kind}</div>
+      ${ing.kind.includes('Add-in') ? `<div style="font-size:8px;color:#e9c46a;margin-top:2px">✦ stir in</div>` : ''}
       <div class="bt-score" style="color:${ing.hex}">${ing.overall.toFixed(1)}</div>
       <div class="bt-check" style="color:${ing.hex}">✓</div>`;
     tile.addEventListener('click', () => {
